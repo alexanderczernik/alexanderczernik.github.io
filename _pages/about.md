@@ -6,6 +6,15 @@ redirect_from:
   - /about/
   - /about.html
 ---
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+
 <div style="display: none;">
 $$
 \newcommand{\wick}[1]{\mathopen{:} #1 \mathclose{:}}
@@ -80,7 +89,7 @@ While this equation describes the limiting behavior, the question if the SDMFW a
 > ### Theorem (Contribution: Unique Equilibrium of the SDMFW)
 > Let $\sigma \in (0, \frac{1}{2})$. The Gaussian measure $\mu_0 \otimes \mu_1$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
 > 
-> $$\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}|^2} \, dx \right\rangle < \infty$$
+> $$\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}}|^2 \, dx \right\rangle < \infty$$
 
 #### Remarks about this Theorem
 Proving uniqueness for this equation was challenging since established ergodic theory for Markov process cannot be applied to this equation, since: 1. the markov semigroup is not conitnuous on the space of measurable and bounded functions, 2. the dynamics of the solution depend on its own Law (through the mean-field nonlinearity). Therefore, I established a novel self-consistency argument guaranteeing that $\mu_0 \otimes \mu_1$ is the unique equilibrium state of the SDMFW. (For more details see my Thesis (add link here) or hopefully soon my preprint about this topic. 
