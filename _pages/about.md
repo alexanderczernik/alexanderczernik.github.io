@@ -39,16 +39,16 @@ $$d\rho_N[\mathbf{\phi}_N, \pi_N] = \frac{1}{Z_N} \exp \left[ -S_E[\phi_N] - \fr
 
 Here, $\pi_N = \partial_\tau \phi_N$ represents an auxiliary fictitious momentum field, and the corresponding Euclidean action is given by:
 
-$$S_{E}[\phi_N] = \int_{\mathbb{T}^2} \left( \frac{1}{2}\sum_{j=1}^N(|\nabla \phi_{N,j}|^2 + |\phi_{N,j}|^2) + \frac{1}{4N} \Big( \sum_{j = 1}^N \phi_{N,j}^2 \Big)^{\circ 2} \right) dx$$
+$$S_{E}[\phi_N] = \int_{\mathbb{T}^2} \left( \frac{1}{2}\sum_{j=1}^N(|\nabla \phi_{N,j}|^2 + |\phi_{N,j}|^2) + \frac{1}{4N} !:\Big(\sum_{j = 1}^N \phi_{N,j}^2 \Big)^{2}!: \right) dx$$
 
-*(Note: The notation $\circ 2$ denotes the standard Wick ordering necessary to prevent ultraviolet divergences in two dimensions).*
+*(Note: The notation $!: \cdot !:$ denotes the standard Wick ordering necessary to prevent ultraviolet divergences in two dimensions).*
 
 #### Hyperbolic Stochastic Quantization
 Building on foundational frameworks established for the two-dimensional stochastic nonlinear wave equation by [Gubinelli et al. (2022)](#gubinelli2022), the ergodicity of the hyperbolic $P(\Phi)_2$-model was demonstrated by [Tolomeo (2023)](#tolomeo2023). Recently, [Liu et al. (2025)](#liu2025) extended these techniques to the multi-component hyperbolic $O(N)$ linear sigma model and its mean-field limit. 
 
 Within this setup, the phase-space measure $\rho_N$ is realized as the unique equilibrium state of a system of coupled non-linear stochastic wave equations for $1 \leq j \leq N$:
 
-$$\partial_\tau^2 \phi_{N,j} +  \partial_\tau \phi_{N,j} + (1 - \Delta) \phi_{N,j}  + \frac{1}{N} \sum^N_{k=1} \phi_{N,k}^{\circ 2} \phi_{N,j} = \sqrt{2}\xi_j(\tau, x)$$
+$$\partial_\tau^2 \phi_{N,j} +  \partial_\tau \phi_{N,j} + (1 - \Delta) \phi_{N,j}  + \frac{1}{N} \sum^N_{k=1} !:\phi_{N,k}^{2} \phi_{N,j}!: = \sqrt{2}\xi_j(\tau, x)$$
 
 where $\xi_j(\tau, x)$ is a standard space-(fictitious)-time white noise vector. 
 
@@ -66,16 +66,16 @@ As the number of components $N \to \infty$, the the coupled interactions vanish,
 
 As shown by [Liu et al. (2025)](#liu2025), the corresponding underdamped Langevin dynamics converges to the **Stochastic Damped Mean-Field Wave Equation (SDMFW)**:
 
-$$\partial_\tau^2 \phi + \partial_\tau \phi + (1 - \Delta) \phi + \langle \phi^{\circ 2} \rangle \phi = \sqrt{2}\xi(\tau, x)$$
+$$\partial_\tau^2 \phi + \partial_\tau \phi + (1 - \Delta) \phi + \langle !:\phi^{2}!: \rangle \phi = \sqrt{2}\xi(\tau, x)$$
 
-Where $\langle \phi^{\circ 2} \rangle$ represents the spatial mean of the expectation of the Wick-ordered square of the field. 
+Where $\langle !:\phi^{2}!: \rangle$ represents the spatial mean of the expectation of the Wick-ordered square of the field. 
 
 While this equation describes the limiting behavior, the question if the SDMFW admits a unique equilbrium state remained an open problem. My Master's thesis' second part addresses this gap by proving that $\mu_0 \otimes \mu_1$ is the unique equilibrium state of the SDMFW: 
 
 > ### Theorem (Contribution: Unique Equilibrium of the SDMFW)
 > Let $\sigma \in (0, \frac{1}{2})$. The Gaussian measure $\mu_0 \otimes \mu_1$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
 > 
-> $$\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \phi^{\circ 2}|^2 \, dx \right\rangle < \infty$$
+> $$\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} !:\phi^{2}|^2!: \, dx \right\rangle < \infty$$
 
 #### Remarks about this Theorem
 Proving uniqueness for this equation was challenging since established ergodic theory for Markov process cannot be applied to this equation, since: 1. the markov semigroup is not conitnuous on the space of measurable and bounded functions, 2. the dynamics of the solution depend on its own Law (through the mean-field nonlinearity). Therefore, I established a novel self-consistency argument guaranteeing that $\mu_0 \otimes \mu_1$ is the unique equilibrium state of the SDMFW. (For more details see my Thesis (add link here) or hopefully soon my preprint about this topic. 
@@ -86,7 +86,7 @@ From a physical and computational point of view this result is interesting as, a
 
 Establishing uniqueness for the SDMFW presents significant mathematical challenges. Standard ergodic theory for Markov processes cannot be applied directly to this equation for two fundamental reasons:
 1. **Lack of Regularity:** The associated Markov semigroup is not continuous on the space of bounded, measurable functions.
-2. **Mean-Field Dependence:** The dynamics of the solution depend non-linearly on its own law through the mean-field expectation $\langle \phi^{\circ 2} \rangle$.
+2. **Mean-Field Dependence:** The dynamics of the solution depend non-linearly on its own law through the mean-field expectation $\langle !:\phi^{2}!: \rangle$.
 
 To overcome these obstacles, I developed a novel self-consistency argument to rigorously guarantee that $\mu_0 \otimes \mu_1$ is the unique equilibrium state of the SDMFW. *(For complete technical details, see my [Master's Thesis](link_to_thesis.pdf) Section 6 — or hopefully soon my solo preprint which is currently in preparation).*
 
