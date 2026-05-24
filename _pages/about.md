@@ -74,7 +74,7 @@ Where $$\langle \wick{\phi^{2}} \rangle$$ represents the expectated value of the
 
 While this equation describes the limiting behavior, the question if the SDMFW admits a unique equilbrium state remained an open problem. My Master's thesis' second part addresses this gap by proving that the Gaussian measure
 
-$$\mu_0 \otimes \mu_1 = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \left( \frac{1}{2}|\nabla \phi|^2 + |\phi|^2 + |\pi|^2) \right \mathcal{D}\phi \, \mathcal{D}\pi$$
+$$\mu_0 \otimes \mu_1 = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \left( \frac{1}{2}|\nabla \phi|^2 + |\phi|^2 + |\pi|^2) \right] \mathcal{D}\phi \, \mathcal{D}\pi$$
 
 is the unique equilibrium state of the SDMFW: 
 
