@@ -22,10 +22,26 @@ header:
     display: none !important;
   }
   */
-  
+
+  /* 3. Add space above the entire main content area */
   #main {
     margin-top: 3em !important;
   }
+
+  /* 4. Kill the negative margin pulling the sidebar up, across ALL screen sizes */
+  .sidebar,
+  .sidebar.sticky,
+  .author__avatar {
+    margin-top: 0 !important;
+  }
+
+  @media (min-width: 64em) {
+    .sidebar,
+    .sidebar.sticky {
+      margin-top: 0 !important;
+    }
+  }
+  
 </style>
 
 <div style="display: none;">
