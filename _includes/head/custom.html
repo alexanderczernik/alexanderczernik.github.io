@@ -26,11 +26,9 @@
     display: none !important;
   }*/
 
-/* 3. The Nuclear Override: Target the exact chain the theme uses */
-  body .page__hero--overlay + #main .sidebar,
-  body #main .sidebar {
+/* 3. Force the sidebar to stay below the banner on ALL devices */
+  .sidebar sticky {
     margin-top: 2em !important;
-    transform: none !important;
   }
   
 </style>
