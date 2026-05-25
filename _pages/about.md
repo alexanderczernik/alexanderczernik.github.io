@@ -9,16 +9,29 @@ header:
   overlay_image: langevin-banner.png
   overlay_filter: 0.2
 ---
-
 <style>
-  /* Increase the height of the banner image */
+  /* 1. Make the banner taller */
   .page__hero--overlay {
     padding-top: 150px !important;
     padding-bottom: 150px !important;
   }
 
+  /* 2. Hide the fallback title text so the banner is pure art
+  .page__hero--overlay .page__title {
+    display: none !important;
+  }
+  */
+  
+  /* 3. Push the sidebar down below the banner */
   .sidebar {
     margin-top: 2em !important; 
+  }
+  
+  /* 4. Force the sidebar down on desktop screens (Overriding the theme's negative margin) */
+  @media (min-width: 64em) {
+    .sidebar {
+      margin-top: 2em !important;
+    }
   }
 </style>
 
@@ -94,14 +107,16 @@ $$\mu_0 \otimes \mu_1 = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \frac{1}{2
 
 is the unique equilibrium state of the SDMFW: 
 
-**Theorem (Contribution: Unique Equilibrium of the SDMFW)** 
-Let $$\sigma \in (0, \frac{1}{2})$$. The Gaussian measure $$\mu_0 \otimes \mu_1$$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
-$$
-\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}}|^2 \, dx \right\rangle < \infty
-$$
-{: .notice--info}
+> **Theorem (Contribution: Unique Equilibrium of the SDMFW)**
+>
+>Let $$\sigma \in (0, \frac{1}{2})$$. The Gaussian measure $$\mu_0 \otimes \mu_1$$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
+> 
+>$$
+>\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}}|^2 \, dx \right\rangle < \infty
+>$$
 
-#### Remarks on the Theorem
+**Remarks on the Theorem**
+
 Establishing uniqueness for the SDMFW presents the mathematical challenge that standard ergodic theory for Markov processes cannot be applied for two reasons:
 1. **Lack of Regularity:** The associated Markov semigroup is not continuous on the space of bounded, measurable functions.
 2. **Mean-Field Dependence:** The dynamics of the solution depend non-linearly on its own law through the mean-field expectation $$\langle \wick{\phi^{2}} \rangle$$.
