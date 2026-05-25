@@ -5,6 +5,9 @@ author_profile: true
 redirect_from: 
   - /about/
   - /about.html
+header:
+  overlay_image: /images/langevin-banner.png
+  overlay_filter: 0.6
 ---
 
 <div style="display: none;">
