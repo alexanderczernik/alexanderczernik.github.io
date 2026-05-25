@@ -24,7 +24,7 @@ Currently, I am working along two parallel tracks: compiling this recent uniquen
 
 ---
 
-## Recent Results
+## Recent Research
 
 ### Background: The Stochastic Quantization Paradigm 
 
@@ -82,7 +82,7 @@ $$\mu_0 \otimes \mu_1 = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \frac{1}{2
 
 is the unique equilibrium state of the SDMFW: 
 
-> **Theorem (Contribution: Unique Equilibrium of the SDMFW)**
+> **Theorem (Unique Equilibrium of the SDMFW)**
 >
 >Let $$\sigma \in (0, \frac{1}{2})$$. The Gaussian measure $$\mu_0 \otimes \mu_1$$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
 > 
