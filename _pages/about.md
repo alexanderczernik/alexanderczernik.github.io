@@ -13,7 +13,7 @@ $$
 $$
 </div>
 
-In April I have finished my Master’s Degree in Mathematics at the **University of Bonn** (I am just waiting on my final grade), where my work focused on the intersection of stochastic analysis and constructive quantum field theory. 
+In April I completed my Master’s Degree in Mathematics at the **University of Bonn** (I am just waiting for my final grade), where my work focused on the intersection of stochastic analysis and constructive quantum field theory. 
 
 My recent research investigates the stochastic quantization of the $$\Phi^4_2$$-model. Specifically, I proved that the non-interacting scalar Euclidean Quantum Field Theory (EQFT) measure is the unique equilibrium state of the underdamped Langevin quantization of the mean-field limit of the $$\Phi^4_2$$-model. 
 
@@ -29,25 +29,27 @@ The primary goal of this research area is to sample configuration fields from a 
 
 $$d\mu[\phi] = \frac{1}{Z} e^{-S_E[\phi]} \, d\mathcal{D}\phi$$
 
-* **The Challenge:** Direct sampling from the infinite-dimensional measure $$\mu$$ is highly intractable due to many reason, however most notably due to the size of the configuration space (which is infinite-dimensional..) and ultraviolet divergences of interacting fields.
+* **The Challenge:** Direct sampling from the infinite-dimensional measure $$\mu$$ is highly intractable due to many reason, however most notably due to the size of the configuration space (which is infinite-dimensional...) and ultraviolet divergences of interacting fields.
 * **The Strategy (Stochastic Quantization):** We construct a continuous-time stochastic process $$\{\phi_\tau\}_{\tau \geq 0}$$ governed by a Langevin-type dynamic that satisfies:
   1. **Invariance:** The target EQFT measure $$\mu$$ is the unique equilibrium (invariant) state of the dynamics.
   2. **Convergence:** For an "easy to sample from" initial distribution $$\phi_0 \sim \rho$$, the law of the process converges to the target measure:
      $$P(\phi_\tau) \xrightarrow{\tau \to \infty} \mu[\phi]$$
-
-> **What does this mean for computing quantum dynamics:** By establishing these properties, at least in theory, we can numerically sample from the true quantum field theory measure $$\mu$$ by computing ergodic time-averages of the stochastic trajectory $$\phi_\tau$$ after a sufficiently large burn-in time.
+     
+> **What does this implicate for computing quantum dynamics:** By establishing these properties, we can, at least in theory, numerically sample from the true quantum field theory measure $$\mu$$ by computing ergodic time-averages of the stochastic trajectory $$\phi_\tau$$ after a sufficiently large burn-in time.
 
 ### The Hyperbolic Stochastic Quantization of the $$O(N)$$ $$\Phi^4_2$$-Model
 
-Recently, the focus shifted from the stochastic quantization via a parabolic (the overdamped langevin dynamics) approach to a hyperbolic (the underdamped langevin dynamics) approach: We aim to sample from the target Euclidean QFT on a two-dimensional torus $$\mathbb{T}^2$$ by sampling the first marginal of a joint phase-space distribution:
+Recently, the focus in the field has shifted from stochastic quantization via a parabolic approach (overdamped Langevin dynamics) to a hyperbolic approach (underdamped Langevin dynamics): In this framework, we aim to sample from the target Euclidean QFT on a two-dimensional torus $$\mathbb{T}^2$$ by sampling the first marginal of a joint phase-space distribution:
 
-$$d\rho_N[\mathbf{\phi}_N, \pi_N] = \frac{1}{Z_N} \exp \left[ -S_E[\phi_N] - \frac{1}{2}\int_{\mathbb{T}^2} \sum_{j=1}^N|\pi_{N,j}|^2 dx \right] \mathcal{D}\phi_N \, \mathcal{D}\pi_N$$
+$$
+d\rho_N[\mathbf{\phi}_N, \pi_N] = \frac{1}{Z_N} \exp \left[ -S_E[\phi_N] - \frac{1}{2}\int_{\mathbb{T}^2} \sum_{j=1}^N|\pi_{N,j}|^2 dx \right] \mathcal{D}\phi_N \, \mathcal{D}\pi_N
+$$
 
 Here, $$\pi_N = \partial_\tau \phi_N$$ represents an auxiliary fictitious momentum field, and the corresponding Euclidean action is given by:
 
 $$S_{E}[\phi_N] = \int_{\mathbb{T}^2} \left( \frac{1}{2}\sum_{j=1}^N(|\nabla \phi_{N,j}|^2 + |\phi_{N,j}|^2) + \frac{1}{4N} \wick{\Big(\sum_{j = 1}^N \phi_{N,j}^2 \Big)^{2}} \right) dx$$
 
-*(Note: The notation $$\wick{\cdot}$$ denotes the standard Wick ordering necessary to prevent ultraviolet divergences in two dimensions).*
+*(Note: The notation $$\wick{\cdot}$$ denotes the standard normal ordering necessary to prevent ultraviolet divergences in two dimensions).*
 
 Building on foundational frameworks established for the two-dimensional stochastic nonlinear wave equation by [Gubinelli et al. (2022)](#gubinelli2022), the ergodicity of the hyperbolic $$P(\Phi)_2$$-model was demonstrated by [Tolomeo (2023)](#tolomeo2023). Recently, [Liu et al. (2025)](#liu2025) extended these techniques to the multi-component hyperbolic $$O(N)$$ linear sigma model and its mean-field limit. 
 
@@ -59,34 +61,30 @@ where $$\xi_j(\tau, x)$$ is a standard space-(fictitious)-time white noise vecto
 
 This hyperbolic formulation introduces an "inertia"-term (the $$\partial_\tau^2 \phi$$ term) to the quantization process. 
 
-> The hyperbolic formulation may prevent the random walk behavior from which the parabolic algorithm, namely the overdamped Langevin dynamics, often suffers and reduces the problem of the algorithm being entrapped in local minimia. However, it comes at the cost of higher implementation complexity to prevent numerical instability. 
-Therefore, especially, in the infinite-dimensional setting of QFT-measures the hyperbolic formulation is a promising alternative to the parabolic formulation.
-
+> **Why underdamped dynamics?** The hyperbolic formulation helps prevent the diffusive random walk behavior that the parabolic algorithm often suffers from, and it reduces the risk of the algorithm becoming trapped in local minima. While it comes at the cost of higher implementation complexity to prevent numerical instability, this makes the hyperbolic formulation a promising alternative — especially in the complex, infinite-dimensional setting of QFT measures.
 ---
 
 ### My Main Contribution: Unique Equilibrium of the SDMFW
 
-[Liu et al. (2025)](#liu2025) showed that as the number of components $$N \to \infty$$, the the coupled interactions vanish, and the joint phase-space target measures $$\rho_N$$ converge weakly to the non-interacting Gaussian measure $$\mu_0 \otimes \mu_1$$ and that the corresponding underdamped Langevin dynamics converges to the **Stochastic Damped Mean-Field Wave Equation (SDMFW)**:
+[Liu et al. (2025)](#liu2025) showed that as the number of components $$N \to \infty$$, the coupled interactions vanish, and the joint phase-space target measures $$\rho_N$$ converge weakly to the non-interacting Gaussian measure $$\mu_0 \otimes \mu_1$$. They further demonstrated that the corresponding underdamped Langevin dynamics converges to the **Stochastic Damped Mean-Field Wave Equation (SDMFW)**:
 
-$$\partial_\tau^2 \phi + \partial_\tau \phi + (1 - \Delta) \phi + \langle \wick{\phi^{2}} \rangle \phi = \sqrt{2}\xi(\tau, x)$$
+$$\partial_\tau^2 \phi + \partial_\tau \phi + (1 - \Delta) \phi + \langle \wick{\phi^{2}} \rangle \phi = \sqrt{2}\xi(\tau, x).$$
 
-Where $$\langle \wick{\phi^{2}} \rangle$$ represents the expectated value of the Wick-ordered square of the field. 
+Where $$\langle \wick{\phi^{2}} \rangle$$ represents the expected value of the normal-ordered square of the field. 
 
-While this equation describes the limiting behavior, the question if the SDMFW admits a unique equilbrium state remained an open problem. My Master's thesis' second part addresses this gap by proving that the Gaussian measure
+While this equation describes the limiting behavior, the question of whether the SDMFW admits a unique equilibrium state remained. The second part of my Master's thesis addresses this gap by proving that the Gaussian measure
 
 $$\mu_0 \otimes \mu_1 = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \frac{1}{2}|\nabla \phi|^2 + |\phi|^2 + |\pi|^2  dx \right] \mathcal{D}\phi \, \mathcal{D}\pi$$
 
 is the unique equilibrium state of the SDMFW: 
 
-> ### Theorem (Contribution: Unique Equilibrium of the SDMFW)
-> Let $$\sigma \in (0, \frac{1}{2})$$. The Gaussian measure $$\mu_0 \otimes \mu_1$$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
-> 
-> $$\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}}|^2 \, dx \right\rangle < \infty$$
-
+**Theorem (Contribution: Unique Equilibrium of the SDMFW)** Let $$\sigma \in (0, \frac{1}{2})$$. The Gaussian measure $$\mu_0 \otimes \mu_1$$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
+ 
+$$\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}}|^2 \, dx \right\rangle < \infty$$
+{: .notice--info}
 
 #### Remarks on the Theorem
-
-Establishing uniqueness for the SDMFW presents the mathematical challenge that standard ergodic theory for Markov processes cannot be applied to this equation for two fundamental reasons:
+Establishing uniqueness for the SDMFW presents the mathematical challenge that standard ergodic theory for Markov processes cannot be applied for two reasons:
 1. **Lack of Regularity:** The associated Markov semigroup is not continuous on the space of bounded, measurable functions.
 2. **Mean-Field Dependence:** The dynamics of the solution depend non-linearly on its own law through the mean-field expectation $$\langle \wick{\phi^{2}} \rangle$$.
 
@@ -103,9 +101,9 @@ While proving the existence of a stochastic flow and the uniqueness of its equil
 
 My future research interests focus on:
 
-* **Efficient Stochastic Quantization Algorithms:** Leveraging the additional inertia of the underdamped Langevin dynamics to design faster-converging Markov Chain Monte Carlo (MCMC) algorithms for lattice field theories, explicitly mitigating issues like random-walk behavior. Furthermore, I am interested in addressing challenges like the complex action (sign) problem in more involved quantum field models.
+* **Efficient Stochastic Quantization Algorithms:** Leveraging the additional inertia of the underdamped Langevin dynamics to design faster-converging Markov Chain Monte Carlo (MCMC) algorithms for lattice field theories, explicitly mitigating issues like random-walk behavior. Furthermore, I aim to address challenges like the complex action (sign) problem in more advanced quantum field models.
 * **Deterministic Approaches to Quantum Simulation:** Investigating state-of-the-art deterministic frameworks — such as variants of Tensor Networks and Matrix Product States (MPS) — and comparing them against stochastic sampling methods.
-* **Beyond Scalar QFT:** Expanding the scope of my research from foundational scalar models (like the $$\Phi^4_2$$ theory) to more physically realistic and complex theories like gauge theories (e.g., Yang-Mills and Quantum Chromodynamics) and systems involving fermions.
+* **Beyond Scalar QFT:** Expanding the scope of my research from foundational scalar models (like the $$\Phi^4_2$$ theory) to more physically realistic and complex systems, particularly gauge theories (e.g., pure Yang-Mills and Quantum Chromodynamics) and models involving fermions.
 
 * ---
 ---
