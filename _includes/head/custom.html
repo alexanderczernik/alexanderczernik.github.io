@@ -14,4 +14,29 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="#ffffff"/>
 
+<style>
+  /* 1. Make the banner taller */
+  .page__hero--overlay {
+    padding-top: 150px !important;
+    padding-bottom: 150px !important;
+  }
+  
+  /* 2. Hide the fallback title text so the banner is pure art */
+  .page__hero--overlay .wrapper {
+    display: none !important;
+  }
+
+  /* 3. Force the sidebar to stay below the banner on ALL devices */
+  .sidebar {
+    margin-top: 2em !important;
+  }
+
+  @media (min-width: 64em) {
+    .sidebar,
+    .sidebar.sticky {
+      margin-top: 2em !important;
+    }
+  }
+</style>
+
 <!-- end custom head snippets -->
