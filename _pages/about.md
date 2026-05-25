@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 header:
   overlay_image: langevin-banner.png
-  overlay_filter: 0.3
+  overlay_filter: 0.2
 ---
 
 <style>
@@ -15,6 +15,10 @@ header:
   .page__hero--overlay {
     padding-top: 150px !important;
     padding-bottom: 150px !important;
+  }
+
+  .sidebar {
+    margin-top: 2em !important; 
   }
 </style>
 
@@ -73,6 +77,7 @@ where $$\xi_j(\tau, x)$$ is a standard space-(fictitious)-time white noise vecto
 This hyperbolic formulation introduces an "inertia"-term (the $$\partial_\tau^2 \phi$$ term) to the quantization process. 
 
 > **Why underdamped dynamics?** The hyperbolic formulation helps prevent the diffusive random walk behavior that the parabolic algorithm often suffers from, and it reduces the risk of the algorithm becoming trapped in local minima. While it comes at the cost of higher implementation complexity to prevent numerical instability, this makes the hyperbolic formulation a promising alternative — especially in the complex, infinite-dimensional setting of QFT measures.
+
 ---
 
 ### My Main Contribution: Unique Equilibrium of the SDMFW
@@ -89,9 +94,11 @@ $$\mu_0 \otimes \mu_1 = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \frac{1}{2
 
 is the unique equilibrium state of the SDMFW: 
 
-**Theorem (Contribution: Unique Equilibrium of the SDMFW)** Let $$\sigma \in (0, \frac{1}{2})$$. The Gaussian measure $$\mu_0 \otimes \mu_1$$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
- 
-$$\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}}|^2 \, dx \right\rangle < \infty$$
+**Theorem (Contribution: Unique Equilibrium of the SDMFW)** 
+Let $$\sigma \in (0, \frac{1}{2})$$. The Gaussian measure $$\mu_0 \otimes \mu_1$$ is the **unique equilibrium state** of the SDMFW in the class of probability measures satisfying a bounded normal-ordered second moment condition:
+$$
+\left\langle \int_{\mathbb{T}^2} |\nabla^{-\sigma} \wick{\phi^{2}}|^2 \, dx \right\rangle < \infty
+$$
 {: .notice--info}
 
 #### Remarks on the Theorem
