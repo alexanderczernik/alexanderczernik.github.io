@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,12 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
----
-layout: archive
-title: "Curriculum Vitae"
-permalink: /cv/
-author_profile: true
----
 
 ## Education
 
@@ -27,7 +21,7 @@ author_profile: true
 * **B.Sc. in Mathematics** | Rheinische Friedrich-Wilhelms-Universität Bonn, DE
   *Apr 2021 – Sep 2023*
   * **Final Grade:** 1.6
-  * **Bachelor's Thesis:** *Impact of Datasets on Generative Models in Imaging* [[Download PDF Thesis](link_to_your_bachelor_thesis.pdf)] — Co-supervised by [Prof. Alexander Effland](https://www.uni-bonn.de/de/forschung-lehre/forschungsprofil/transdisziplinaere-forschungsbereiche/tra-3-life-1/mitgliederverzeichnis/alexander-effland) and [Dr. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s)
+  * **Bachelor's Thesis:** *Impact of Datasets on Generative Models in Imaging* [[Download PDF Thesis](link_to_your_bachelor_thesis.pdf)] — Co-supervised by [Prof. Alexander Effland](https://www.uni-bonn.de/de/forschung-lehre/forschungsprofil/transdisziplinaere-forschungsbereiche/tra-3-life-1/mitgliederverzeichnis/alexander-effland) and [Prof. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s)
 
 * **B.Sc. in Psychology** | Paris-Lodron Universität Salzburg, AT
   *Aug 2017 – Mar 2021*
@@ -35,6 +29,7 @@ author_profile: true
 
 * **Abitur** | Gymnasium Puchheim, DE
   *Graduated: 2017*
+  
 ---
 
 ## Professional & Research Experience
@@ -46,14 +41,14 @@ author_profile: true
 
 * **Student Trainee** | SDL Applied Machine Learning, Forschungszentrum Jülich, DE
   *Aug 2022 – Aug 2023*
-  * Conducted machine learning research under the mentorship of [Dr. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s).
+  * Conducted machine learning research under the mentorship of [Prof. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s).
   * Developed and implemented generative machine learning architectures (GANs, Diffusion Models).
   * Engineered data preprocessing pipelines for extreme ultraviolet (EUV) solar images from the SDO AIA instrument.
   * Conducted large-scale model training and statistical data analysis within high-performance computing (HPC) environments, gaining extensive experience with parallel resource scheduling via SLURM.
 
 * **Corporate HR Intern** | Compensation & Benefits, Generali AG, Munich, DE
   *Aug 2019 – Jan 2020*
-  * Organized a multidisciplinary project team to design and deploy a custom software utility automating complex internal salary audits.
+  * Organized a multidisciplinary project team to design and deploy a custom software utility automating internal salary audits.
 
 ---
 
