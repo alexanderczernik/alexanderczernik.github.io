@@ -21,9 +21,16 @@
     padding-bottom: 150px !important;
 }
 
-/* 2. Target the main container to push it down */
+/* 2. Mobile Styles (Default) */
 .sidebar.sticky {
-    margin-top: 150px !important;
+    margin-top: 20px !important; /* A reasonable gap for mobile screens */
+}
+
+/* 3. Desktop Styles (Only applies to screens wider than 1024px) */
+@media screen and (min-width: 1024px) {
+    .sidebar.sticky {
+        margin-top: 170 px !important; /* Pushes it down only on desktop */
+    }
 }
 
 </style>
