@@ -9,6 +9,7 @@ header:
   overlay_image: langevin-banner.png
   overlay_filter: 0.2
 ---
+
 <style>
   /* 1. Make the banner taller */
   .page__hero--overlay {
@@ -22,16 +23,8 @@ header:
   }
   */
   
-  /* 3. Push the sidebar down below the banner */
-  .sidebar {
-    margin-top: 2em !important; 
-  }
-  
-  /* 4. Force the sidebar down on desktop screens (Overriding the theme's negative margin) */
-  @media (min-width: 64em) {
-    .sidebar {
-      margin-top: 2em !important;
-    }
+  #main {
+    margin-top: 3em !important;
   }
 </style>
 
