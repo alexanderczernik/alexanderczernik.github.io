@@ -10,22 +10,6 @@ header:
   overlay_filter: 0.2
 ---
 
-/*
-<style>
-  /* 1. Make the banner taller */
-  .page__hero--overlay {
-    padding-top: 150px !important;
-    padding-bottom: 150px !important;
-  }
-
-  /* 2. Hide the fallback title text so the banner is pure art
-  .page__hero--overlay .page__title {
-    display: none !important;
-  }
-  */  
-</style>
-*/
-
 <div style="display: none;">
 $$
 \newcommand{\wick}[1]{\mathopen{:} #1 \mathclose{:}}
