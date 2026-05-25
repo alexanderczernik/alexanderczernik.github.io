@@ -6,8 +6,16 @@ redirect_from:
   - /about.html
 header:
   overlay_image: langevin-banner.png
-  overlay_filter: 0.6
+  overlay_filter: 0.3
 ---
+
+<style>
+  /* Increase the height of the banner image */
+  .page__hero--overlay {
+    padding-top: 150px !important;
+    padding-bottom: 150px !important;
+  }
+</style>
 
 <div style="display: none;">
 $$
