@@ -34,7 +34,7 @@ redirect_from:
 ## Professional & Research Experience
 
 ### Teaching Assistant / Tutor 
-*Apr 2025 – Apr 2026 | Department of Mathematics, University of Bonn*
+*Apr 2025 – Apr 2026 | Department of Mathematics, University of Bonn, DE*
   * Led weekly tutorial sessions for mathematics and physics courses.
   * Graded mathematical assignments and provided technical feedback to students.
 
