@@ -11,10 +11,8 @@ redirect_from:
 
 
 ## Education
-
-* **M.Sc. in Mathematics** | Rheinische Friedrich-Wilhelms-Universität Bonn, DE *
-  
-  Oct 2023 – Apr 2026
+### M.Sc. in Mathematics
+*Rheinische Friedrich-Wilhelms-Universität Bonn, DE — Oct 2023 – Apr 2026*
   * **Current Average Grade:** 1.3
   * **Specialization:** Stochastic Analysis and Partial Differential Equations (PDEs)
   * **Master's Thesis:** *The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity* [[Download PDF Thesis](link_to_your_master_thesis.pdf)] — Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/)
