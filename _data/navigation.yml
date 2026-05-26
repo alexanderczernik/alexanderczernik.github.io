@@ -13,7 +13,7 @@ main:
     url: /cv/
     
   - title: "Publications"
-    url: /publications.html
+    url: /publications/
 
   - title: "Teaching"
     url: /teaching/    
