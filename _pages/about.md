@@ -98,8 +98,8 @@ Establishing uniqueness for the SDMFW presents the mathematical challenge that s
 
 To overcome these obstacles, I developed a novel self-consistency argument to guarantee that $$\mu_0 \otimes \mu_1$$ is the unique equilibrium state of the SDMFW. *(For complete technical details, see my [Master's Thesis](link_to_thesis.pdf) Section 6 — or hopefully soon my solo preprint which is currently in preparation).*
 
-**Physical & Computational Significance:** 
-From an applied perspective, this result demonstrates that within the stochastic quantization program, the best approximation of a large $$N$$-component $$\Phi^4_2$$-system is achieved simply by sampling from the non-interacting Gaussian Free Field measure.
+> **Physical & Computational Significance:** 
+>From an applied perspective, this result demonstrates that within the stochastic quantization program, the best approximation of a large $$N$$-component $$\Phi^4_2$$-system is achieved simply by sampling from the non-interacting Gaussian Free Field measure.
 
 ---
 
