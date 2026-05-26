@@ -14,7 +14,7 @@ $$
 ## Upcoming Talks
 
 * **StuKon 2026: Proving the Existence of the Unique Invariant Measure of the Stochastic Damped Mean-Field Wave Equation** 
-  *September 16–18, 2026 (Forthcoming) | DMV-Studierendenkonferenz (StuKon) 2026* | Katholische Universität Eichstätt-Ingolstadt, DE*
+  *September 16–18, 2026 (Forthcoming) | DMV-Studierendenkonferenz (StuKon) 2026 | Katholische Universität Eichstätt-Ingolstadt, DE*
   <details style="margin-top: 0.5em; margin-bottom: 1em; cursor: pointer;">
     <summary style="font-weight: bold; font-size: 0.9em;">[See Abstract]</summary>
     <p markdown="1" style="margin-top: 0.5em; padding-left: 15px; border-left: 4px solid var(--border-color, #ccc); font-style: italic; opacity: 0.85;">
@@ -27,7 +27,7 @@ $$
 ## Past Talks
 
 * **Master's Thesis Defense: The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity**  
-  *April 28, 2026 | Department of Mathematics* | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
+  *April 28, 2026 | Department of Mathematics | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
   
   Links: [[Download Presentation Slides](/assets/files/master_defense_slides_czernik.pdf)]
   
