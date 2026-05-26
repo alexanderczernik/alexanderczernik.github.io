@@ -19,7 +19,7 @@ main:
     url: /teaching/    
 
   - title: "Talks"
-    url: /talks.html    
+    url: /talkspage/
     
   # - title: "CV"
   #   url: /cv-json/
