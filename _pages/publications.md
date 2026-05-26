@@ -25,7 +25,6 @@ $$
      </div>
    </details>
 
-<!---
 
 ## Preprints
 
@@ -52,13 +51,12 @@ Links: [[Download PDF](/assets/files/master_thesis_czernik.pdf)] *<!-- Update pa
 
 <details style="margin-top: 0.5em; margin-bottom: 1em; cursor: pointer;">
      <summary style="font-weight: bold; font-size: 0.9em;">[See Abstract]</summary>
-     <p markdown="1" class="notice" style="margin-top: 0.5em; font-style: italic;">
-    We consider the Smoluchowski Kramers Approximation for the stochastic damped mean field wave equation (SDMFW) $$\varepsilon^2 \partial_t^2 u_\varepsilon +  \partial_t u_\varepsilon + (1 - \Delta) u_\varepsilon  + \mathbb{E}[\wick{u_\varepsilon^2}]u_\varepsilon = \sqrt{2}\xi$$ to the stochastic mean field heat equation (SMFH) $$u_0 + (1 - \Delta) u_0  + \mathbb{E}[\wick{u_0^2}]u_0 = \sqrt{2}\xi$$, with a white-noise forcing term $$\xi$$, posed on the two-dimensional torus $$\mathbb{T}^2$$. The main contributions of this thesis are: (i) We apply the $$I$$-Method to derive a global bound on $$u_\varepsilon$$ that is uniform in $$\varepsilon$$, allowing for the strong global convergence of $$u_\varepsilon$$ to $$u_0$$ as $$\varepsilon \to 0$$. (ii) We establish an argument, utilizing self-adjoint operator theory, to prove that $$\rho_\varepsilon \coloneq \mathcal{N}\left(0, \begin{pmatrix} (1-\Delta)^{-1} & 0 \\ 0 & \varepsilon^{-2} \end{pmatrix}\right) \in \mathcal{P}(H^{-\sigma}(\mathbb{T}^2) \times H^{-1-\sigma}(\mathbb{T}^2))$$ is the unique invariant measure of the SDMFW in the class $$\{\mu \in \mathcal{P}(H^{-\sigma}(\mathbb{T}^2) \times H^{-1-\sigma}(\mathbb{T}^2)) : \mathbb{E}_\mu[\wick{u^2}] \in H^{-\sigma}(\mathbb{T}^2) \}$$, where $$\wick{u^2}$$ denotes a Wick renormalization.
-(iii) We prove the convergence of $$\rho_\varepsilon$$ to $$\rho_0$$ as $$\varepsilon \to 0$$ using continuous bounded test functions that vanish at infinity, where $$\rho_0 \coloneq \mathcal{N}(0,(1-\Delta)^{-1}) \in \mathcal{P}(H^{-\sigma}(\mathbb{T}^2))$$ is the invariant measure of the SMFH, and discuss why this convergence fails in a weak sense and is trivial in a vague sense.  
+     <p markdown="1" style="margin-top: 0.5em; font-style: italic;">
+    We consider the Smoluchowski Kramers Approximation for the stochastic damped mean field wave equation (SDMFW) $$\varepsilon^2 \partial_t^2 u_\varepsilon +  \partial_t u_\varepsilon + (1 - \Delta) u_\varepsilon  + \mathbb{E}[\wick{u_\varepsilon^2}]u_\varepsilon = \sqrt{2}\xi$$ to the stochastic mean field heat equation (SMFH) $$u_0 + (1 - \Delta) u_0  + \mathbb{E}[\wick{u_0^2}]u_0 = \sqrt{2}\xi$$, with a white-noise forcing term $$\xi$$, posed on the two-dimensional torus $$\mathbb{T}^2$$. The main contributions of this thesis are: (i) We apply the $$I$$-Method to derive a global bound on $$u_\varepsilon$$ that is uniform in $$\varepsilon$$, allowing for the strong global convergence of $$u_\varepsilon$$ to $$u_0$$ as $$\varepsilon \to 0$$. (ii) We establish an argument, utilizing self-adjoint operator theory, to prove that $$\rho_\varepsilon := \mathcal{N}\left(0, \begin{pmatrix} (1-\Delta)^{-1} & 0 \\ 0 & \varepsilon^{-2} \end{pmatrix}\right) \in \mathcal{P}(H^{-\sigma}(\mathbb{T}^2) \times H^{-1-\sigma}(\mathbb{T}^2))$$ is the unique invariant measure of the SDMFW in the class $$\{\mu \in \mathcal{P}(H^{-\sigma}(\mathbb{T}^2) \times H^{-1-\sigma}(\mathbb{T}^2)) : \mathbb{E}_\mu[\wick{u^2}] \in H^{-\sigma}(\mathbb{T}^2) \}$$, where $$\wick{u^2}$$ denotes a Wick renormalization.
+(iii) We prove the convergence of $$\rho_\varepsilon$$ to $$\rho_0$$ as $$\varepsilon \to 0$$ using continuous bounded test functions that vanish at infinity, where $$\rho_0 := \mathcal{N}(0,(1-\Delta)^{-1}) \in \mathcal{P}(H^{-\sigma}(\mathbb{T}^2))$$ is the invariant measure of the SMFH, and discuss why this convergence fails in a weak sense and is trivial in a vague sense.  
 </p>
    </details>
 
-<!--- 
 ### Bachelor's Thesis
 **Impact of Datasets on Generative Models in Imaging**  
 Rheinische Friedrich-Wilhelms-Universität Bonn, 2023.  
