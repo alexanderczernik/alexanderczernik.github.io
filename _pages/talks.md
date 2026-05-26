@@ -27,6 +27,7 @@ $$
 ## Past Talks
 
 * **Master's Thesis Defense: The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity**  
-  *April 28, 2026 | Department of Mathematics* | Rheinische Friedrich-Wilhelms-Universität Bonn, DE* Links: [[Download Presentation Slides](/assets/files/master_defense_slides_czernik.pdf)] **
+  *April 28, 2026 | Department of Mathematics* | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
+  Links: [[Download Presentation Slides](/assets/files/master_defense_slides_czernik.pdf)]
   
   
