@@ -22,8 +22,7 @@ $$
      <summary style="font-weight: bold; font-size: 0.9em;">See Abstract</summary>
      <p markdown="1" style="margin-top: 0.5em; padding-left: 15px; border-left: 4px solid var(--border-color, #ccc); font-style: italic; opacity: 0.85;">
    Solar activity is one of the main drivers of variability in our solar system and the key source of space weather phenomena that affect Earth and near Earth space. The extensive record of high resolution extreme ultraviolet (EUV) observations from the Solar Dynamics Observatory (SDO) offers an unprecedented, very large dataset of solar images. In this work, we make use of this comprehensive dataset to investigate capabilities of current state-of-the-art generative models to accurately capture the data distribution behind the observed solar activity states. Starting from StyleGAN-based methods, we uncover severe deficits of this model family in handling fine-scale details of solar images when training on high resolution samples, contrary to training on natural face images. When switching to the diffusion based generative model family, we observe strong improvements of fine-scale detail generation. For the GAN family, we are able to achieve similar improvements in fine-scale generation when turning to ProjectedGANs, which uses multi-scale discriminators with a pre-trained frozen feature extractor. We conduct ablation studies to clarify mechanisms responsible for proper fine-scale handling. Using distributed training on supercomputers, we are able to train generative models for up to 1024x1024 resolution that produce high quality samples indistinguishable to human experts, as suggested by the evaluation we conduct. We make all code, models and workflows used in this study publicly available at [[github][(https://github.com/SLAMPAI/generative-models-for-highres-solar-images)]  
-</p>
-   </details>
+
 
 
 ## Preprints
@@ -36,8 +35,7 @@ $$
      <summary style="font-weight: bold; font-size: 0.9em;">See Abstract</summary>
      <p markdown="1" style="margin-top: 0.5em; padding-left: 15px; border-left: 4px solid var(--border-color, #ccc); font-style: italic; opacity: 0.85;">
        We study the two-dimensional hyperbolic $$O(N)$$ linear sigma model, i.e.~a system of $N$ interacting stochastic damped nonlinear wave equations (SdNLW) with coupled cubic nonlinearities, indexed by a parameter $$\varepsilon > 0$$. We show that as $$\varepsilon$$ goes to zero (Smoluchowski-Kramers approximation) and $$N$$ goes to infinity (mean-field limit), each component of the solution to the SdNLW system converges to the solution to the stochastic nonlinear heat equation (SNLH) with a mean-field nonlinearity. We prove such convergence via two regimes: first with $$\varepsilon$$ going to zero to obtain the parabolic $$O(N)$$ linear sigma model, i.e.~a system of $$N$$ coupled SNLH, and then with $$N$$ going to infinity; or first with $$N$$ going to infinity for each component to obtain the mean-field SdNLW and then with $$\varepsilon$$ going to zero. As a result, we obtain a commuting diagram regarding the convergence from the hyperbolic $$O(N)$$ linear sigma model and the mean-field SNLH.
-</p>
-   </details>
+
 
 ---
 
