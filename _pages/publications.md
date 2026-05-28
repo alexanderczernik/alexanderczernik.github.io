@@ -15,7 +15,7 @@ $$
 
 1. **A Comparative Study on Generative Models for High Resolution Solar Observation Imaging**  
    M. Cherti, **A. Czernik**, S. Kesselheim, F. Effenberger, and J. Jitsev.  
-   Presented at the *2nd ICML Workshop on Machine Learning for Astrophysics* (2023).    
+   Presented at the *2nd ICML Workshop on Machine Learning for Astrophysics, 2023.*    
    Links: [[ICML Workshop](https://icml.cc/virtual/2023/workshop/21497)] [[arXiv](https://arxiv.org/abs/2304.07169)]
 
    <details style="margin-top: 0.5em; margin-bottom: 1em; cursor: pointer;">
@@ -29,7 +29,7 @@ $$
 
 1. **On the Smoluchowski-Kramers Approximation for global dynamics of the hyperbolic $O(N)$ linear sigma model**  
    **A. Czernik**, R. Liu, and S. Liu.  
-   *In preparation*, 2026.
+   *In preparation, 2026.*
 
    <details style="margin-top: 0.5em; margin-bottom: 1em; cursor: pointer;">
      <summary style="font-weight: bold; font-size: 0.9em;">See Abstract</summary>
@@ -43,7 +43,7 @@ $$
 
 ### Master's Thesis
 **The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity**  
-Rheinische Friedrich-Wilhelms-Universität Bonn, 2026.  
+*Rheinische Friedrich-Wilhelms-Universität Bonn, 2026.*  
 Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/).  
 Links: [[Download PDF](/assets/files/master_thesis_czernik.pdf)] *<!-- Update path when uploaded -->*
 
@@ -56,7 +56,7 @@ Links: [[Download PDF](/assets/files/master_thesis_czernik.pdf)] *<!-- Update pa
 
 ### Bachelor's Thesis
 **Impact of Datasets on Generative Models in Imaging**  
-Rheinische Friedrich-Wilhelms-Universität Bonn, 2023.  
+*Rheinische Friedrich-Wilhelms-Universität Bonn, 2023.*  
 Co-supervised by [Prof. Alexander Effland](https://www.uni-bonn.de/de/forschung-lehre/forschungprofil/transdisziplinaere-forschungsbereiche/tra-3-life-1/mitgliederverzeichnis/alexander-effland) and [Prof. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s).  
 Links: [[Download PDF](/assets/files/bachelor_thesis_czernik.pdf)] *<!-- Update path when uploaded -->*
 
