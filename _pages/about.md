@@ -18,7 +18,7 @@ $$
 
 In April I completed my Master’s Degree in Mathematics at the **University of Bonn** (I am just waiting for my final grade), where my work focused on the intersection of stochastic analysis and constructive quantum field theory. 
 
-My recent research investigates the stochastic quantization of the $$\Phi^4_2$$-model. Specifically, I proved that the non-interacting scalar Euclidean Quantum Field Theory (EQFT) measure is the unique equilibrium state of the underdamped Langevin quantization of the mean-field limit of the $$\Phi^4_2$$-model. 
+My recent research investigates the stochastic quantization of the $$\Phi^4_2$$-model. Specifically, I proved that the non-interacting scalar Euclidean Quantum Field Theory measure is the unique equilibrium state of the underdamped Langevin quantization of the mean-field limit of the $$\Phi^4_2$$-model. 
 
 Currently, I am working along two parallel tracks: compiling this recent uniqueness result into a solo preprint, and shifting my focus from the abstract mathematical foundations toward **computational quantum field theory**—exploring how the mathematical frameworks can be implemented numerically to make physical predictions.
 
@@ -36,7 +36,7 @@ $$d\mu[\phi] = \frac{1}{Z} e^{-S_E[\phi]} \, d\mathcal{D}\phi$$
 * **The Strategy (Stochastic Quantization):** We construct a continuous-time stochastic process $$\{\phi_\tau\}_{\tau \geq 0}$$ governed by a Langevin-type dynamic that satisfies:
   1. **Invariance:** The target EQFT measure $$\mu$$ is the unique equilibrium (invariant) state of the dynamics.
   2. **Convergence:** For an "easy to sample from" initial distribution $$\phi_0 \sim \rho$$, the law of the process converges to the target measure:
-     $$P(\phi_\tau) \xrightarrow{\tau \to \infty} \mu[\phi]$$
+     $$P(\phi_\tau) \xrightarrow{\tau \to \infty} \mu[\phi]$$.
      
 > **What does this implicate for computing quantum dynamics:** By establishing these properties, we can, at least in theory, numerically sample from the true quantum field theory measure $$\mu$$ by computing ergodic time-averages of the stochastic trajectory $$\phi_\tau$$ after a sufficiently large burn-in time.
 
@@ -52,7 +52,7 @@ Here, $$\pi_N = \partial_\tau \phi_N$$ represents an auxiliary fictitious moment
 
 $$S_{E}[\phi_N] = \int_{\mathbb{T}^2} \left( \frac{1}{2}\sum_{j=1}^N(|\nabla \phi_{N,j}|^2 + |\phi_{N,j}|^2) + \frac{1}{4N} \wick{\Big(\sum_{j = 1}^N \phi_{N,j}^2 \Big)^{2}} \right) dx$$
 
-*(Note: The notation $$\wick{\cdot}$$ denotes the standard normal ordering necessary to prevent ultraviolet divergences in two dimensions).*
+*(Note: The notation $$\wick{\cdot}$$ denotes the normal ordering necessary to prevent ultraviolet divergences in two dimensions).*
 
 Building on foundational frameworks established for the two-dimensional stochastic nonlinear wave equation by [Gubinelli et al. (2022)](#gubinelli2022), the ergodicity of the hyperbolic $$P(\Phi)_2$$-model was demonstrated by [Tolomeo (2023)](#tolomeo2023). Recently, [Liu et al. (2025)](#liu2025) extended these techniques to the multi-component hyperbolic $$O(N)$$ linear sigma model and its mean-field limit. 
 
@@ -78,7 +78,7 @@ Where $$\langle \wick{\phi^{2}} \rangle$$ represents the expected value of the n
 
 While this equation describes the limiting behavior, the question of whether the SDMFW admits a unique equilibrium state remained. The second part of my Master's thesis addresses this gap by proving that the Gaussian measure
 
-$$\mu_0 \otimes \mu_1 = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \frac{1}{2}|\nabla \phi|^2 + |\phi|^2 + |\pi|^2  dx \right] \mathcal{D}\phi \, \mathcal{D}\pi$$
+$$d(\mu_0 \otimes \mu_1) [\phi, \pi] = \frac{1}{Z} \exp \left[ - \int_{\mathbb{T}^2} \frac{1}{2}|\nabla \phi|^2 + |\phi|^2 + |\pi|^2  dx \right] \mathcal{D}\phi \, \mathcal{D}\pi$$
 
 is the unique equilibrium state of the SDMFW: 
 
@@ -96,7 +96,7 @@ Establishing uniqueness for the SDMFW presents the mathematical challenge that s
 1. **Lack of Regularity:** The associated Markov semigroup is not continuous on the space of bounded, measurable functions.
 2. **Mean-Field Dependence:** The dynamics of the solution depend non-linearly on its own law through the mean-field expectation $$\langle \wick{\phi^{2}} \rangle$$.
 
-To overcome these obstacles, I developed a novel self-consistency argument to guarantee that $$\mu_0 \otimes \mu_1$$ is the unique equilibrium state of the SDMFW. *(For complete technical details, see my [Master's Thesis](link_to_thesis.pdf) Section 6 — or hopefully soon my solo preprint which is currently in preparation).*
+To overcome these obstacles, I developed a novel self-consistency argument to guarantee that $$\mu_0 \otimes \mu_1$$ is the unique equilibrium state of the SDMFW. *(For complete technical details, see my [Master's Thesis](/assets/files/master_thesis_czernik.pdf) Section 6 — or hopefully soon my solo preprint which is currently in preparation).*
 
 > **Physical & Computational Significance:** 
 >From an applied perspective, this result demonstrates that within the stochastic quantization program, the best approximation of a large $$N$$-component $$\Phi^4_2$$-system is achieved simply by sampling from the non-interacting Gaussian Free Field measure.
@@ -111,7 +111,7 @@ My future research interests focus on:
 
 * **Efficient Stochastic Quantization Algorithms:** Leveraging the additional inertia of the underdamped Langevin dynamics to design faster-converging Markov Chain Monte Carlo (MCMC) algorithms for lattice field theories, explicitly mitigating issues like random-walk behavior. Furthermore, I aim to address challenges like the complex action (sign) problem in more advanced quantum field models.
 * **Deterministic Approaches to Quantum Simulation:** Investigating state-of-the-art deterministic frameworks — such as variants of Tensor Networks and Matrix Product States (MPS) — and comparing them against stochastic sampling methods.
-* **Beyond Scalar QFT:** Expanding the scope of my research from foundational scalar models (like the $$\Phi^4_2$$ theory) to more physically realistic and complex systems, particularly gauge theories (e.g., pure Yang-Mills and Quantum Chromodynamics) and models involving fermions.
+* **Moving Beyond Scalar QFT:** Expanding the scope of my research from foundational scalar models (like the $$\Phi^4_2$$ theory) to more physically realistic and complex systems, particularly gauge theories (e.g., Yang-Mills and Quantum Chromodynamics) and models involving fermions.
 
 * ---
 ---
