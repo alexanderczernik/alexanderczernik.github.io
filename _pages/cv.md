@@ -34,12 +34,12 @@ redirect_from:
 ## Professional & Research Experience
 
 ### Teaching Assistant / Tutor 
-*Apr 2025 – Apr 2026 | Department of Mathematics, University of Bonn, DE*
+*Apr 2025 – Mar 2026 | Department of Mathematics, University of Bonn, DE*
   * Led weekly tutorial sessions for mathematics and physics courses.
   * Graded mathematical assignments and provided technical feedback to students.
 
 ### Student Trainee in Machine Learning
-*Aug 2022 – Aug 2023 | SDL Applied Machine Learning, Forschungszentrum Jülich, DE*
+*Aug 2022 – Jul 2023 | SDL Applied Machine Learning, Forschungszentrum Jülich, DE*
   * Conducted machine learning research under the mentorship of [Prof. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s).
   * Developed and implemented generative machine learning architectures (Diffusion Models, GANs).
   * Engineered data preprocessing pipelines for extreme ultraviolet (EUV) solar images from the SDO AIA instrument.
