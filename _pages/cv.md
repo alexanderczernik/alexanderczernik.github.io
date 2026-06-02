@@ -14,7 +14,7 @@ redirect_from:
 ### M.Sc. in Mathematics
 *Oct 2023 – Apr 2026 | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
   * **Current Average Grade:** 1.3
-  * **Specialization:** Stochastic Analysis and Partial Differential Equations 
+  * **Specialization:** Stochastic and Functional Analysis and Partial Differential Equations 
   * **Master's Thesis:** *The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity* [[Download PDF Thesis](/assets/files/master_thesis_czernik.pdf)] — Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/)
 
 ### B.Sc. in Mathematics
