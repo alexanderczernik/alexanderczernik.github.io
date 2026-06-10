@@ -44,7 +44,7 @@ $$
 ### Master's Thesis
 **The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity**  
 *Rheinische Friedrich-Wilhelms-Universität Bonn, 2026.*  
-Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/).  
+Co-supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/) and [Dr. Ruoyuan Liu](https://sites.google.com/view/ruoyuan-liu/home?authuser=0).  
 Links: [[Download PDF](/assets/files/master_thesis_czernik.pdf)] *<!-- Update path when uploaded -->*
 
 <details style="margin-top: 0.5em; margin-bottom: 1em; cursor: pointer;">
