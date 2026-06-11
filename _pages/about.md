@@ -64,7 +64,7 @@ where $$\xi_j(\tau, x)$$ is a standard space-(fictitious)-time white noise vecto
 
 This hyperbolic formulation introduces an fictitious inertia-term (the $$\partial_\tau^2 \phi$$ term) to the quantization process. 
 
-> **Why underdamped dynamics?** The hyperbolic formulation helps prevent the diffusive random walk behavior that the parabolic algorithm often suffers from, and it reduces the risk of the algorithm becoming trapped in local minima. While it comes at the cost of higher implementation complexity to prevent numerical instability, this makes the hyperbolic formulation an alternative — especially in the complex, infinite-dimensional setting of QFT measures. (See [Duane et al. (1987)](#duane1987) for an implementation within Lattice Field Theories and [Neal (2011)](#neal2011) for a more general discussion of Hamiltonian Monte Carlo)
+> **Why underdamped dynamics?** The hyperbolic formulation helps prevent the diffusive random walk behavior that the parabolic algorithm often suffers from, and it reduces the risk of the algorithm becoming trapped in local minima. While it comes at the cost of higher implementation complexity to prevent numerical instability, this makes the hyperbolic formulation an alternative — especially in the complex, infinite-dimensional setting of QFT measures (See [Duane et al. (1987)](#duane1987) for an implementation within Lattice Field Theories and [Neal (2011)](#neal2011) for a more general discussion of Hamiltonian Monte Carlo).
 
 ---
 
