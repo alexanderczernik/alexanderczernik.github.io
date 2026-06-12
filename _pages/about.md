@@ -20,7 +20,7 @@ In April I completed my Master’s Degree in Mathematics at the **University of 
 
 My most recent research focused on the stochastic quantization of the $$\Phi^4_2$$-model. Specifically, I proved that the non-interacting scalar Euclidean Quantum Field Theory measure is the unique equilibrium state of the underdamped Langevin quantization of the mean-field limit of the $$\Phi^4_2$$-model. 
 
-Currently, I am working along two parallel tracks: compiling this recent uniqueness result into a solo preprint, and shifting my focus from the mathematical foundations toward **computational quantum field theory**.
+Currently, I am working along two parallel tracks: compiling this recent uniqueness result into a solo preprint, and shifting my focus from the mathematical foundations toward **computational quantum field theory**. Although complex quantum many-body systems and field theories often resist complete rigorous description, the analytical frameworks I studied provide powerful tools for computational methods. I aim to leverage my mathematical background in the research of computational approaches: Utilizing operator theory to analyze Hamiltonian systems, representation theory to capture quantum-inherent symmetries, and a combination of functional analysis and stochastics to optimize variational Ansätze and quantum algorithms.
 
 ---
 
@@ -103,9 +103,11 @@ To overcome these obstacles, I derived a self-consistency argument to guarantee 
 
 ---
 
-## Future Directions: Shifting to Computational QFT
+## Outlook 
 
-Although complex quantum many-body systems and field theories often resist complete rigorous description, the analytical frameworks I studied provide powerful tools for computational methods. I aim to leverage my mathematical background to refine and optimize these computational approaches: Utilizing operator theory to analyze Hamiltonian systems, representation theory to capture quantum-inherent symmetries, and a combination of functional analysis and stochastics to optimize variational Ansätze and quantum algorithms.
+While mathematicians rigorously investigated questions of global existence and uniqueness, the physics community pragmatically advanced these stochastic methods across a variety of quantum systems. Over the last four decades, a fundamental barrier has consistently limited the success of these approaches: the "sign problem." Arising in fermionic or frustrated models, the sign problem occurs when the Euclidean action becomes complex, rendering the target measure non-positive and, therefore, breaking stochastic sampling algorithms like Monte Carlo. 
+
+It has been shown that, in its general form, the sign problem is NP-hard ([Troyer & Wiese, 2005](#Troyer2005)). Nevertheless, modern stochastic frameworks are being developed to mitigate the sign problem, like deforming the integration contour into the complex plane, considering complex Langevin dynamics and combing approaches with machine learning. For a comprehensive overview of contemporary approaches to Lattice field theories with a sign problem, see [Aarts & Sexty (2026)](#Aarts2026).
 
 
 
@@ -114,15 +116,11 @@ Although complex quantum many-body systems and field theories often resist compl
 
 ## 📚 References
 * <a id="Parisi1981"></a> **[Parisi & Wu, 1981]** Parisi, G., & Wu, Y. S. (1981). *Perturbation theory without gauge fixing.* Sci. Sinica, 24(4), 483–496. [DOI: 10.1360/ya1981-24-4-483](https://doi.org/10.1360/ya1981-24-4-483)
-
 * <a id="Batrouni1985"></a> **[Batrouni et al., 1985]** Batrouni, G. G., Katz, G. R., Kronfeld, A. S., Lepage, G. P., Svetitsky, B., & Wilson, K. G. (1985). *Langevin simulations of lattice field theories.* Phys. Rev. D, 32(10), 2736–2747. [DOI: 10.1103/PhysRevD.32.2736](https://doi.org/10.1103/PhysRevD.32.2736)
-  
 * <a id="gubinelli2022"></a> **[Gubinelli et al., 2022]** Gubinelli, M., Koch, H., Oh, T., & Tolomeo, L. (2022). *Global dynamics for the two-dimensional stochastic nonlinear wave equations.* International Mathematics Research Notices (IMRN), 2022(21), 16954–16999. [DOI: 10.1093/imrn/rnab084](https://doi.org/10.1093/imrn/rnab084)
-
 * <a id="tolomeo2023"></a> **[Tolomeo, 2023]** Tolomeo, L. (2023). *Ergodicity for the hyperbolic $$P(\Phi)_2$$-model.* [arXiv:2310.02190](https://arxiv.org/abs/2310.02190)
-  
 * <a id="duane1987"></a> **[Duane et al., 1987]** Duane, S., Kennedy, A. D., Pendleton, B. J., & Roweth, D. (1987). *Hybrid Monte Carlo.* Phys. Lett. B, 195(2), 216–222. [DOI: 10.1016/0370-2693(87)91197-X](https://doi.org/10.1016/0370-2693\(87\)91197-X)
-
 * <a id="neal2011"></a> **[Neal, 2011]** Neal, R. M. (2011). *MCMC using Hamiltonian dynamics.* In S. Brooks, A. Gelman, G. Jones, & X. L. Meng (Eds.), *Handbook of Markov Chain Monte Carlo* (Vol. 2, pp. 113–162). Chapman and Hall/CRC. [DOI: 10.1201/b10905-6](https://doi.org/10.1201/b10905-6)
-
 * <a id="liu2025"></a> **[Liu et al., 2025]** Liu, R., Liu, S., & Oh, T. (2025). *Hyperbolic $$O(N)$$ linear sigma model and its mean-field limit.* [arXiv:2511.21950](https://arxiv.org/abs/2511.21950)
+* <a id="Troyer2005"></a> **[Troyer & Wiese, 2005]** Troyer, M., & Wiese, U.-J. (2005). *Computational Complexity and Fundamental Limitations to Fermionic Quantum Monte Carlo Simulations.* Phys. Rev. Lett., 94(17), 170201. [DOI: 10.1103/PhysRevLett.94.170201](https://doi.org/10.1103/PhysRevLett.94.170201)
+* <a id="Aarts2026"></a> **[Aarts & Sexty, 2026]** Aarts, G., & Sexty, D. (2026). *Lattice field theories with a sign problem.* arXiv preprint arXiv:2604.24290. [URL: https://arxiv.org/abs/2604.24290](https://arxiv.org/abs/2604.24290)
