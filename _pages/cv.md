@@ -13,7 +13,7 @@ redirect_from:
 ## Education
 ### M.Sc. in Mathematics
 *Oct 2023 – Apr 2026 | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
-  * **Current Average Grade:** 1.3
+  * **Final Average Grade (Calculated):** 1.1 (Passed with Distinction Pending Official Confirmation)
   * **Specialization:** Stochastic and Functional Analysis and Partial Differential Equations 
   * **Master's Thesis:** *The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity* [[Download PDF Thesis](/assets/files/master_thesis_czernik.pdf)] — Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/)
 
@@ -24,7 +24,7 @@ redirect_from:
 
 ### B.Sc. in Psychology
 *Aug 2017 – Mar 2021 | Paris-Lodron Universität Salzburg, AT*
-  * **Honors:** Graduated with Distinction
+  * **Honors:** Passed with Distinction
 
 ### Abitur
   *Graduated: 2017 | Gymnasium Puchheim, DE*
