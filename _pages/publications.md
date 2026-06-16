@@ -29,7 +29,7 @@ $$
 
 1. **On the Smoluchowski-Kramers Approximation for global dynamics of the hyperbolic $O(N)$ linear sigma model**  
    **A. Czernik**, R. Liu, and S. Liu.  
-   *Preprint available on arXiv: 2606.15214 [[arXiv]((https://arxiv.org/abs/2606.15214)]*
+   *Preprint available on arXiv: 2606.15214 [[arXiv](https://arxiv.org/abs/2606.15214)]*
 
    <details style="margin-top: 0.5em; margin-bottom: 1em; cursor: pointer;">
      <summary style="font-weight: bold; font-size: 0.9em;">See Abstract</summary>
