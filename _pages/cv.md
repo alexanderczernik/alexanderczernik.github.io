@@ -41,9 +41,11 @@ redirect_from:
 ### Student Trainee in Machine Learning
 *Aug 2022 – Jul 2023 | SDL Applied Machine Learning, Forschungszentrum Jülich, DE*
   * Conducted machine learning research under the mentorship of [Prof. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s).
-  * Developed and implemented generative machine learning architectures (Diffusion Models, GANs).
+  * Reviewed machine learning literature and derived custom code
+  * Adapted and implemented generative machine learning architectures (Diffusion Models, GANs).
   * Engineered data preprocessing pipelines for extreme ultraviolet solar images from the SDO AIA instrument.
-  * Conducted large-scale model training and statistical data analysis within high-performance computing environments, gaining experience with parallel resource scheduling via SLURM.
+  * Conducted large-scale model training and statistical data analysis within high-performance computing environments, gaining experience with parallel resource scheduling.
+  * Co-authored the manuscript "[A Comparative Study on Generative Models for High Resolution Solar Observation Imaging](https://icml.cc/virtual/2023/workshop/21497)"
 
 ### Corporate HR Intern
   *Aug 2019 – Jan 2020 | Compensation & Benefits, Generali AG, Munich, DE*
