@@ -15,16 +15,16 @@ redirect_from:
 *Oct 2023 – Apr 2026 | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
   * **Passed with Distinction** (Final Grade 1.1)
   * **Specialization:** Stochastic and Functional Analysis, Partial Differential Equations, and Mathematical Phsyics 
-  * **Master's Thesis:** *The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity* [[Download PDF Thesis](/assets/files/master_thesis_czernik.pdf)] — Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/)
+  * **Master's Thesis:** *The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity* [[Download PDF Thesis](/assets/files/master_thesis_czernik.pdf)] — Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/) and [Dr. Ruoyuan Liu](https://sites.google.com/view/ruoyuan-liu/home?authuser=0) 
 
 ### B.Sc. in Mathematics
 *Apr 2021 – Sep 2023 | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
-  * **Finale Grade:** 1.6
+  * **Final Grade:** 1.6
   * **Bachelor's Thesis:** *Impact of Datasets on Generative Models in Imaging* [[Download PDF Thesis](/assets/files/bachelor_thesis_czernik.pdf)] — Co-supervised by [Prof. Alexander Effland](https://www.uni-bonn.de/de/forschung-lehre/forschungsprofil/transdisziplinaere-forschungsbereiche/tra-3-life-1/mitgliederverzeichnis/alexander-effland) and [Prof. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s)
 
 ### B.Sc. in Psychology
 *Aug 2017 – Mar 2021 | Paris-Lodron Universität Salzburg, AT*
-  * **Passed with Distinction:** 
+  * **Passed with Distinction** 
 
 ### Abitur
   *Graduated: 2017 | Gymnasium Puchheim, DE*
@@ -65,7 +65,7 @@ Given my research direction shifting toward computational frameworks, I have exp
 
 ### Chair of Volt Bonn Youth Group
   *Aug 2024 – Present | Volt Bonn, DE*
-  * Lead and coordinate political activities for the pan-European youth organization in the Bonn region.
+  * Lead and coordinate activities for the pan-European youth organization in the Bonn region.
   * Conceptualize, build, and moderate interactive public workshops focusing on infrastructural topics like modern Mobility and Digitalization.
 
 ### Academic Mentor at "Lernen macht Schule" Initiative
