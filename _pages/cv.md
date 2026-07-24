@@ -14,7 +14,7 @@ redirect_from:
 ### M.Sc. in Mathematics
 *Oct 2023 – Apr 2026 | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
   * **Passed with Distinction** (Final Grade 1.1)
-  * **Specialization:** Stochastic and Functional Analysis, Partial Differential Equations, and Mathematical Phsyics 
+  * **Specialization:** Stochastics, Analysis, Partial Differential Equations, and Mathematical Phsyics 
   * **Master's Thesis:** *The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity* [[Download PDF Thesis](/assets/files/master_thesis_czernik.pdf)] — Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/) and [Dr. Ruoyuan Liu](https://sites.google.com/view/ruoyuan-liu/home?authuser=0) 
 
 ### B.Sc. in Mathematics
