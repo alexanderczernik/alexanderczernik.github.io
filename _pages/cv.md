@@ -13,18 +13,18 @@ redirect_from:
 ## Education
 ### M.Sc. in Mathematics
 *Oct 2023 – Apr 2026 | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
-  * **Final Average Grade (Calculated):** 1.1 (Passed with Distinction Pending Official Confirmation)
-  * **Specialization:** Stochastic and Functional Analysis and Partial Differential Equations 
+  * **Passed with Distinction** (Final Grade 1.1)
+  * **Specialization:** Stochastic and Functional Analysis, Partial Differential Equations, and Mathematical Phsyics 
   * **Master's Thesis:** *The Stochastic Smoluchowski-Kramers Approximation with a Mean-Field Nonlinearity* [[Download PDF Thesis](/assets/files/master_thesis_czernik.pdf)] — Supervised by [Prof. Herbert Koch](https://www.math.uni-bonn.de/~koch/)
 
 ### B.Sc. in Mathematics
 *Apr 2021 – Sep 2023 | Rheinische Friedrich-Wilhelms-Universität Bonn, DE*
-  * **Final Grade:** 1.6
+  * **Finale Grade:** 1.6
   * **Bachelor's Thesis:** *Impact of Datasets on Generative Models in Imaging* [[Download PDF Thesis](/assets/files/bachelor_thesis_czernik.pdf)] — Co-supervised by [Prof. Alexander Effland](https://www.uni-bonn.de/de/forschung-lehre/forschungsprofil/transdisziplinaere-forschungsbereiche/tra-3-life-1/mitgliederverzeichnis/alexander-effland) and [Prof. Stefan Kesselheim](https://www.fz-juelich.de/profile/kesselheim_s)
 
 ### B.Sc. in Psychology
 *Aug 2017 – Mar 2021 | Paris-Lodron Universität Salzburg, AT*
-  * **Honors:** Passed with Distinction
+  * **Passed with Distinction:** 
 
 ### Abitur
   *Graduated: 2017 | Gymnasium Puchheim, DE*
