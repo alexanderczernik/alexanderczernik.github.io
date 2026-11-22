@@ -1,0 +1,141 @@
+%! TEX root = main.tex
+\documentclass[11pt,a4paper]{amsart}
+
+% Core packages
+%\usepackage{showkeys}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{mathtools,amssymb,amsthm,amsfonts,mathrsfs,bm, bbm}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=nyt,
+  giveninits=true,
+  maxbibnames=99
+]{biblatex}
+
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{tikz-3dplot}
+\tikzset{smalltext/.style={"\textup{\small #1}" description}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black
+}
+
+\numberwithin{equation}{section}
+
+% Theorem environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Basic notation
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\eps}{\varepsilon}
+
+\renewcommand{\P}{P}
+
+
+% Differential and Fourier notation
+\newcommand{\ft}[1]{\widehat{#1}}
+\newcommand{\jb}[1]{\langle #1\rangle}
+
+\newcommand{\cj}[1]{\overline{#1}}
+
+%Special Commands 
+\newcommand{\EV}[1]{\mathbb{E}\bracket*{#1}}
+\newcommand{\EVMU}[1]{\mathbb{E}_\mu \bracket*{#1}}
+\newcommand{\EVRHO}[1]{\mathbb{E}_{\rho_\epsilon} \bracket*{#1}}
+\newcommand{\wick}[1]{:\! #1 \!:}
+
+\newcommand{\HS}{\mathscr L_2}
+\newcommand{\Law}{\operatorname{Law}}
+\newcommand{\Span}{\operatorname{span}}
+
+% Formatting shortcuts used in the source files
+\newcommand{\noi}{\noindent}
+\newcommand{\les}{\lesssim}
+\DeclarePairedDelimiter{\bracket}{[}{]}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\inner}{\langle}{\rangle}
+
+\addbibresource{Literatur.bib}
+
+% Manuscript information
+\title[Uniqueness of invariant measures]
+  {Uniqueness of invariant measures for mean-field stochastic damped wave and heat equations}
+\author{Alexander Czernik}
+\address{Université Jean Monnet Saint-Étienne}
+\email{alexander.czernik@univ-st-etienne.fr}
+\date{}
+\subjclass[2020]{60H15, 35L71, 37L40}
+\keywords{stochastic damped wave equation, invariant measure,
+  mean-field nonlinearity, Wick renormalization}
+
+\begin{document}
+
+\begin{abstract}
+We study invariant measures for a Wick-renormalized mean-field stochastic damped wave equation on the two-dimensional torus and for the corresponding stochastic heat equation. With Wick ordering relative to the massive Gaussian free field with covariance \((1-\Delta)^{-1}\), we prove uniqueness among invariant laws whose renormalized second moment belongs to \(H^{-\sigma}(\mathbb T^2)\), where \(0<\sigma<\tfrac12\). Stationarity reduces the mean-field equation to a linear equation with a deterministic distribution-valued potential. We show that self-consistency forces this deterministic potential to vanish. The damped wave equation therefore has invariant law \(\mathcal N(0,(1-\Delta)^{-1})\otimes\mathcal N(0,\varepsilon^{-2}I)\), with covariance understood distributionally, while the heat equation has the Gaussian free field as its invariant law. This resolves self-consistency for spatially varying distribution-valued potentials and establishes uniqueness in the specified class.
+As the inertia parameter tends to zero, the position marginal remains equal to the invariant law of the corresponding stochastic heat equation, whereas the velocity marginal assigns vanishing probability to every bounded subset of \(H^{-1-\sigma}(\mathbb T^2)\), establishing Smoluchowksi-Kramers type behavior. 
+\end{abstract}
+
+\maketitle
+
+\input{Chapters/Introduction.tex}
+\input{Chapters/proof.tex}
+\appendix
+\input{Chapters/Appendix.tex}
+
+\section*{Acknowledgements}
+The author is grateful to Herbert Koch and Ruoyuan Liu for their supervision of the author's master's thesis and for introducing the author to the study of stochastic partial differential equations in infinite dimensions. Particular thanks are due to Herbert Koch for pointing out that an infinite-dimensional Sobolev space, equipped with its norm topology, admits no nonzero continuous functions with compact support. This observation informed the choice of test functions used to describe the behavior of the velocity marginals.
+
+\section*{Disclosure of AI assistance}
+During the preparation of this manuscript, the author used
+OpenAI's ChatGPT for assistance with writing and exposition
+and with the development and revision of parts of the
+mathematical arguments, including suggestions for auxiliary
+lemmas and proofs. Specific uses are documented in the
+annotated LaTeX source files available in the
+\href{https://github.com/alexanderczernik/alexanderczernik.github.io/blob/dee787a89a7c0ef80735113e041fa398cd73a694/assets/files/uniqueness_manuscript}
+{accompanying source repository}.
+The author takes full responsibility for the mathematical
+statements, proofs, references, and final text.
+
+\printbibliography
+% Add acknowledgements and funding information here.
+
+
+
+\end{document}
