@@ -1,0 +1,1294 @@
+% chktex-file 1 
+% chktex-file 2
+% chktex-file 3
+% chktex-file 9
+% chktex-file 11
+% chktex-file 17
+% chktex-file 36
+
+%%%%GPT writing assistance - the fundamental proof idea comes from the author - GPT Astra identified the following flaw: the Hilbertspaces H_L and \H^{-\sigma} needed be equivalent for the proof of theorem \ref{theorem:uniqueness_SDMFW} to be true and it provided the Lemmas resolving this problem.
+%%%%Furthemore, it streamlined proofs considerably 
+\section{Uniqueness of the invariant dynamics of the SDMFW}\label{Chpt_Invariant_Dynamics}
+
+Let $\sigma\in(0,\frac12)$ and let
+\[
+    \mu\in\mathcal P\bigl(\mathcal H^{-\sigma}(\T^2)\bigr)
+    \qquad \text{with} \qquad
+    \mathcal H^{-\sigma}
+    =H^{-\sigma}(\T^2)\times H^{-1-\sigma}(\T^2),
+\]
+be an invariant law for \eqref{eq:SDMFW} such that
+\[
+    M_\mu:=\mathbb E_\mu[\wick{u^2}]
+    \in H^{-\sigma}(\T^2).
+\]
+As explained in Section \ref{sec:SDMFW_inv_msr}, stationarity freezes
+the mean-field term.  Hence, a stationary solution satisfies the linear
+equation
+\begin{equation}\label{eq:frozen_linear_dynamics}
+    \begin{cases}
+        du_\eps=v_\eps\,dt,\\
+        dv_\eps=-\eps^{-2}(L_\mu u_\eps+v_\eps)\,dt
+        +\sqrt2\,\eps^{-2}\,dW_t,
+    \end{cases}
+\end{equation}
+with $\Lambda:=1-\Delta$ and $L_\mu:=\Lambda+M_\mu$. 
+
+\noindent
+We first construct $L_\mu$ as a self-adjoint operator with compact
+resolvent that is bounded from below. We then prove sufficient Sobolev regularity and show that $L_\mu$ induces a Hilbert Space $\H_L$ with norm equivalent to the canonical norm of $\H^{-\sigma}$. Building on the framework established in \cite{DaPrato_Zabczyk_2014} to analyze stochastic differential equations (SDEs) in infinite dimensions, we prove that~\eqref{eq:frozen_linear_dynamics} admits a weak solution in Proposition~\ref{prop:mild} (in the sense of Theorem 5.4 in \cite{DaPrato_Zabczyk_2014}). Then, using the characterization Theorem 11.7 in~\cite{DaPrato_Zabczyk_2014} of invariant measures of linear infinite dimensional SDEs, we uniquely determine the invariant measure $\mu = \mathcal{N}(0, L_\mu^{-1}) \otimes \mathcal{N}(0, \varepsilon^{-2}I)$ of~\eqref{eq:frozen_linear_dynamics}. 
+Finally, we are left to show that self-consistency forces $M_\mu = 0$ which implies that any invariant measure $\mu$ of the~\eqref{eq:SDMFW} equals $\rho_\eps = \mathcal{N}(0, \Lambda^{-1}) \otimes \mathcal{N}(0, \varepsilon^{-2}I)$.
+
+\subsection{The operator \(L_{\mu}\) and its spectral basis}\label{sec_invdynamics_mildsolution}
+
+For the remainder of this section we write $M = M_{\mu}$ and $L = L_{\mu}$.
+The real-valued distribution $M$ defines on $H^1(\T^2)$ the symmetric
+quadratic form
+\[
+    \mathfrak l[u,v]
+    :=\langle \Lambda^{1/2}u,\Lambda^{1/2}v\rangle_{L^2_x}
+      +\langle M,u\overline v\rangle,
+\]
+where the second term is understood by Sobolev duality.
+
+This first lemma utilizes the KLMN Theorem to prove that the operator $L$ can be realized as a self-adjoint operator on $L^2(\T^2)$.
+\begin{lemma}\label{lem:relative_bound}
+Suppose $M\in H^{-\sigma}(\T^2)$ for some $\sigma\in(0,1)$.
+For every $\delta>0$ there exists $C_\delta>0$ such that
+\[
+    |\langle M,|u|^2\rangle|
+    \leq
+    \delta\langle\Lambda u,u\rangle_{L^2_x}
+    +C_\delta\|u\|_{L^2_x}^2,
+    \qquad u\in H^1(\T^2).
+\]
+Consequently, $\mathfrak l$ is closed and bounded from below on
+$H^1(\T^2)$ and determines a self-adjoint operator $L$ on
+$L^2(\T^2)$ with form domain $H^1(\T^2)$.
+\end{lemma}
+
+\begin{proof}
+Choose $\eta>0$ such that $2\eta+\sigma\leq1$.  By Sobolev duality,
+the negative-order product estimate in \cite[Proposition~2]{Benyi2025},
+and Sobolev embedding,
+\begin{align*}
+    |\langle M,|u|^2\rangle|
+    \leq
+    \|Mu\|_{H^{-1+\eta}_x}\|u\|_{H^{1-\eta}_x}
+    \lesssim
+    \|M\|_{H^{-\sigma}_x}\|u\|_{H^{1-\eta}_x}^2.
+\end{align*}
+Interpolating between fractional Sobolev spaces, for any $\tilde{\delta} > 0$, there exists a constant $C(\tilde{\delta}) > 0$ such that
+\[
+    \|u\|_{H^{1-\eta}_x}^2
+    \leq
+    \widetilde\delta\|u\|_{H^1_x}^2
+    +C(\widetilde{\delta})\|u\|_{L^2_x}^2.
+\]
+Taking $\widetilde\delta$ sufficiently small proves the stated bound.
+The final assertion follows from the KLMN theorem
+\cite[Theorem~10.21]{schmudgen_operators}.
+\end{proof}
+
+The next lemma demonstrates that $L$ has compact resolvent and characterizes its spectrum in relation to the operator $\Lambda$. 
+\begin{lemma}\label{lemma_equ_ev}
+Suppose $M\in H^{-\sigma}(\T^2)$ for some $\sigma\in(0,1)$. There exists $c>0$ such that $L_c:=L+c$ is strictly positive and
+\begin{equation}\label{eq:form_equivalence}
+    C_1\langle\Lambda u,u\rangle_{L^2_x}
+    \leq
+    \langle L_cu,u\rangle_{L^2_x}
+    \leq
+    C_2\langle\Lambda u,u\rangle_{L^2_x},
+    \qquad u\in H^1(\T^2),
+\end{equation}
+for some $C_1,C_2>0$.  Moreover, $L$ has compact resolvent.  In
+particular, there exist a real orthonormal basis $\{e_k\}_{k\in \N}$ of
+$L^2(\T^2)$ and real eigenvalues $(\lambda_k)_{k\geq1}$, repeated
+according to multiplicity and satisfying $\lambda_k\to+\infty$, such
+that
+\[
+    Le_k=\lambda_ke_k.
+\]
+If $(\nu_k)_{k\geq1}$ are the eigenvalues of $L_c$ and
+$(\ell_k)_{k\geq1}$ those of $\Lambda$, both in nondecreasing order,
+then
+\[
+    C_1\ell_k\leq\nu_k\leq C_2\ell_k,
+    \qquad k\geq1.
+\]
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lem:relative_bound}, $L$ is bounded from below.  Choose
+$c>0$ so that $L_c$ is strictly positive.  The relative form bound,
+combined with strict positivity of $L_c$, gives
+\eqref{eq:form_equivalence}.
+
+For $f\in L^2(\T^2)$ and $u=L_c^{-1}f$, the lower bound in
+\eqref{eq:form_equivalence} gives
+\[
+    \|u\|_{H^1_x}^2
+    \lesssim
+    \langle L_cu,u\rangle_{L^2_x}
+    =\langle f,u\rangle_{L^2_x}
+    \lesssim
+    \|f\|_{L^2_x}\|u\|_{H^1_x}.
+\]
+Thus, $L_c^{-1}:L^2(\T^2)\to H^1(\T^2)$ is bounded.  Since
+$H^1(\T^2)\hookrightarrow L^2(\T^2)$ is compact, $L_c^{-1}$ is
+compact on $L^2$; hence both $L_c$ and $L$ have compact resolvent.
+The spectral assertions follow from the spectral theorem.  Finally,
+the eigenvalue comparison follows from \eqref{eq:form_equivalence} and
+the min-max principle.
+\end{proof}
+Since the previous Lemma establishes that for some $c > 0$, $L_c \coloneq L + c$ is a strictly positive self-adjoint operator, we can define $\H_L$ as the closure of $L^2(\T^2) \times L^2(\T^2)$ with respect to the norm induced by the inner product
+\begin{align}\label{eq:inner_product}
+    \langle \mathbf{u}, \mathbf{v} \rangle_{L_c} \coloneqq \langle L_c^{-\sigma} u_1, v_1 \rangle_{L^2_x} + \langle L_c^{-1-\sigma} u_2, v_2 \rangle_{L^2_x},
+\end{align}
+with respect to the normalized inner product on $L^2(\T^2)$:
+\begin{align*}
+    \langle u, v \rangle_{L^2_x} \coloneq (2\pi)^{-2} \int_{\T^2} u(x) \overline{v(x)} \, dx.
+\end{align*}
+
+Finally, the following lemma is the point at which the restriction $\sigma<\frac12$ enters the spectral projection argument. The Corollary following this Lemma, infers that the Hilbert spaces $\H_L$ and $\H^{-\sigma}$ are equivalent. 
+%%%%GPT Astra very high: this Lemma was conceived by Chat GPT itself - the author only added details. 
+\begin{lemma}\label{lem:eigenfunction_regularity}
+Let $\sigma\in(0,\frac12)$ and $M\in H^{-\sigma}(\T^2)$.  For the
+constant $c$ in Lemma \ref{lemma_equ_ev}, the operator $L_c$ extends
+to an isomorphism
+\begin{equation}\label{eq:Lc_sobolev_isomorphism}
+    L_c:H^{1+\sigma}(\T^2)
+    \longrightarrow H^{-1+\sigma}(\T^2).
+\end{equation}
+Consequently,
+\[
+    e_k\in H^{1+\sigma}(\T^2),
+    \qquad k\geq1,
+\]
+and the algebraic span
+\[
+    \mathscr E_L:=\operatorname{span}\{e_k:k\geq1\}
+\]
+is dense in both $H^{1+\sigma}(\T^2)$ and
+$H^\sigma(\T^2)$.
+\end{lemma}
+
+\begin{proof}
+From the product estimate \cite{Benyi2025} Proposition 2 and Sobolev's inequality if follows that multiplication by an element of
+$H^{1+\sigma}(\T^2)$ is bounded on $H^{-\sigma}(\T^2)$.  Hence,
+\begin{equation}\label{eq:potential_multiplier_bound}
+    \|Mf\|_{H^{-\sigma}_x}
+    \lesssim
+    \|M\|_{H^{-\sigma}_x}\|f\|_{H^{1+\sigma}_x}.
+\end{equation}
+Because $0 < \sigma<\frac12$, the embedding
+\[
+    H^{-\sigma}(\T^2)
+    \hookrightarrow H^{-1+\sigma}(\T^2)
+\]
+is compact.  It follows that multiplication by $M$ is a compact
+operator from $H^{1+\sigma}(\T^2)$ to $H^{-1+\sigma}(\T^2)$.  The same is true of
+the zeroth-order term $cI$.  Since
+\[
+    \Lambda:H^{1+\sigma}(\T^2)
+    \longrightarrow H^{-1+\sigma}(\T^2)
+\]
+is an isomorphism, $K = \Lambda^{-1}(M+cI)$ is compact. Additionally, $L_c$ has trivial kernel: if $L_cf=0$, then
+$f\in H^{1+\sigma}(\T^2)\subset H^1(\T^2)$, and strict positivity of the form of $L_c$ gives $f=0$.
+Thus, writing $L_c=\Lambda+M+c = \Lambda(I + K)$, the Fredholm alternative \cite[Theorem~6.6]{Brezis2011} implies that $L_c$ is Fredholm of index zero between
+these spaces. Finally, from the bounded inverse theorem follows \eqref{eq:Lc_sobolev_isomorphism}.
+
+Since $(\lambda_k+c)e_k\in L^2(\T^2)\subset H^{-1+\sigma}(\T^2)$,
+\eqref{eq:Lc_sobolev_isomorphism} gives $e_k\in H^{1+\sigma}(\T^2)$.
+It remains to prove density.  Let $f\in H^{1+\sigma}(\T^2)$ and set
+$g=L_cf\in H^{-1+\sigma}(\T^2)$.  The finite linear span of $\{e_k\}_{k \in \N}$ is
+dense in $H^{-1+\sigma}(\T^2)$: indeed, $L^2(\T^2)$ is dense in
+$H^{-1+\sigma}(\T^2)$, while the finite eigenfunction expansions are dense
+in $L^2(\T^2)$.  Choose $g_N\in\mathscr E_L$ with
+$g_N\to g$ in $H^{-1+\sigma}(\T^2)$ and set $f_N=L_c^{-1}g_N$.  Then
+$f_N\in\mathscr E_L$ and, by \eqref{eq:Lc_sobolev_isomorphism},
+$f_N\to f$ in $H^{1+\sigma}(\T^2)$.  Thus, $\mathscr E_L$ is dense in
+$H^{1+\sigma}(\T^2)$.  Its density in $H^\sigma(\T^2)$ follows from the density
+of $H^{1+\sigma}(\T^2)$ in $H^\sigma(\T^2)$.
+\end{proof}
+For \(s\geq0\), equip
+\[
+ H_{L_c}^s:=D(L_c^{s/2})
+\]
+with the norm 
+\[
+\|f\|_{H_{L_c}^s}:=\|L_c^{s/2}f\|_{L^2_x}.
+\]
+For \(s<0\), let \(H_{L_c}^s\) be the completion of \(L^2(\T^2)\)
+in this norm, equivalently the \(L^2\)-pivot dual of \(H_{L_c}^{-s}\).
+
+\begin{corollary}[Identification of the Sobolev phase space]\label{cor:equ_norms}
+For every \(s\in[-1-\sigma,1+\sigma]\),
+\begin{align*}
+    H_{L_c}^s=H^s(\T^2)
+\end{align*}
+with equivalent norms. In particular,
+\begin{align*}
+ \H_L=H_{L_c}^{-\sigma}\times H_{L_c}^{-1-\sigma}
+     =\H^{-\sigma}.
+\end{align*}
+These identifications preserve the Borel sigma-algebras.
+\end{corollary}
+
+\begin{proof}
+
+Form equivalence of $L_c$ and $\Lambda$, established in Lemma~\ref{lemma_equ_ev}, identifies \(H_{L_c}^1\) with \(H^1(\T^2)\). By the Heinz inequality for self-adjoint operators (\cite[Proposition 10.14]{schmudgen_operators}) form equivalence of $L_c$ and $\Lambda$ translates to the form equivalence of $L_c^{s}$ and $\Lambda^{s}$ for $s \in [0,1]$. Then, Corollary 10.12 in \cite{schmudgen_operators} implies that $L_c^{-s}$ and $\Lambda^{-s}$ are form equivalent. In particular, for \(g\in L^2(\T^2)\),
+\[
+ \|g\|_{H^{-1+\sigma}}
+ \asymp\|L_c^{-(1-\sigma)/2}g\|_{L^2}.
+\]
+For \(f\in\mathscr E_L\), \eqref{eq:Lc_sobolev_isomorphism} now gives
+\[
+ \|f\|_{H^{1+\sigma}}
+ \asymp\|L_c f\|_{H^{-1+\sigma}}
+ \asymp\|L_c^{(1+\sigma)/2}f\|_{L^2}.
+\]
+By Lemma~\ref{lem:eigenfunction_regularity}, \(\mathscr E_L\) is dense
+in \(H^{1+\sigma}(\T^2)\), and it is dense in \(H_{L_c}^{1+\sigma}\) by spectral
+truncation.  Both spaces embed continuously into \(L^2(\T^2)\), so completion identifies
+them as the same space. Interpolation and duality give the remaining indices.
+The assertion about Borel sets follows from equivalence of norms.
+\end{proof}
+%%%%
+
+\subsection{Weak solution of the frozen SDE and its invariant measure}\label{sec_invdynamics_unique}
+Throughout this subsection, all Hilbert spaces are real. We work on
+\(\H:=\H_L\), equipped with the inner product
+\eqref{eq:inner_product}, and set \(U:=L^2(\T^2)\).
+By Corollary~\ref{cor:equ_norms}, \(\H\) is the original Sobolev space \(\H^{-\sigma}\) with an equivalent norm.
+Define the operators 
+\begin{equation}\label{eq:generator}
+ \begin{split}
+ \mathcal A(u,v)&=(v,-\eps^{-2}(Lu+v)),\\
+ B_\eps h&=(0,\sqrt2\,\eps^{-2}h)
+ \end{split}
+\end{equation}
+with domains $D(\mathcal A)=H_{L_c}^{1-\sigma}\times H_{L_c}^{-\sigma} =H^{1-\sigma}(\T^2)\times H^{-\sigma}(\T^2)$ and $D(B) = U$.
+Here \(L=L_c-cI\) is extended continuously from
+\(H_{L_c}^{1-\sigma}\) to \(H_{L_c}^{-1-\sigma}\).
+This extension agrees with the form realization on their common
+domain and does not require a definition of \(Mu\) for arbitrary
+\(u\in H^{-\sigma}\).
+
+We establish that~\eqref{eq:frozen_linear_dynamics} admits a weak solution in the sense of \cite{DaPrato_Zabczyk_2014} Sections 5.1--5.2. More precisely, on a filtered probability space, with a cylindrical \(U\)-Wiener process \(W\) relative
+to the filtration, an adapted progressively measurable
+\(\H\)-valued process \(X\) is a weak solution if its paths are locally
+integrable in \(\H\) and, for every \(h\in D(\mathcal A^*)\),
+\begin{equation}\label{eq:weak_frozen}
+ \langle X(t),h\rangle_{\mathcal{H}}
+ =\langle X(0),h\rangle_{\mathcal H}
+  +\int_0^t\langle X(s),\mathcal A^*h\rangle_{\mathcal{H}}\,ds
+  +\int_0^t\langle B_\eps^*h,dW_s\rangle_U .
+\end{equation}
+The identity is understood almost surely for each \(t\). We use
+the continuous version obtained below. All adjoints in this
+subsection are taken with respect to the fixed inner product of
+\(\H\), unless explicitly stated otherwise.
+
+%%%%GPT streamlined proof
+\begin{proposition}[Existence and uniqueness of a weak solution]\label{prop:mild}
+Suppose $M\in H^{-\sigma}(\T^2)$ for some $\sigma\in(0,\frac12)$.
+The operator \(\mathcal A\) generates a strongly continuous semigroup \(S(t)\) for \(t\geq0\) on \(\H\).
+For every \(\H\)-valued \(\mathcal F_0\)-measurable random variable
+\(X_0\), the frozen equation has a unique weak solution, up to
+modification, given by
+\begin{equation}\label{eq:mild}
+ X(t)=S(t)X_0+\int_0^t S(t-s)B_\eps\,dW_s
+\end{equation}
+for $t \geq 0$.
+
+\noindent
+%It has an adapted continuous \(\H\)-valued version.
+\end{proposition}
+
+\begin{proof} 
+We show that the stochastic process $X(t)$ satisfies the conditions of Theorem 5.4 in \cite{DaPrato_Zabczyk_2014}. Then existence and uniqueness of a weak solution follow from this theorem. We are left to establish that $\mathcal A$ generates a strongly continuous semigroup in $\H$ and that the stochastic convolution is well-defined.
+Decompose \(\mathcal A=\mathcal J+\mathcal R\), where
+\[
+ \mathcal J(u,v)=(v,-\eps^{-2}L_c u),\qquad
+ \mathcal R(u,v)=(0,\eps^{-2}cu-\eps^{-2}v).
+\]
+On finite spectral sums, define, for every \(t\in\R\),
+\begin{equation}\label{eq:abstract_wave_group}
+ G(t)=
+ \begin{pmatrix}
+ \cos(tL_c^{1/2}/\eps)&
+       \eps L_c^{-1/2}\sin(tL_c^{1/2}/\eps)\\
+ -\eps^{-1}L_c^{1/2}\sin(tL_c^{1/2}/\eps)&
+       \cos(tL_c^{1/2}/\eps)
+ \end{pmatrix}.
+\end{equation}
+The spectral calculus interprets the off-diagonal entries between
+the two components of \(\H\). On the \(k\)-th mode this is the
+solution operator for
+\(u_k'=v_k,\ v_k'=-\eps^{-2}\nu_k u_k\), where
+\(\nu_k=\lambda_k+c\) are the eigenvalues of $L_c$. It preserves the equivalent norm
+\begin{equation}\label{eq:equ_norm}
+ \|(u,v)\|_{\H,\eps}^2
+ =\sum_{k\geq1}\left(\nu_k^{-\sigma}|u_k|^2
+             +\eps^2\nu_k^{-1-\sigma}|v_k|^2\right).
+\end{equation}
+Consequently, \(G(t)\) extends to an isometry for the norm
+\(\|\cdot\|_{\H,\eps}\).
+The trigonometric addition formulas give \(G(t+s)=G(t)G(s)\)
+and \(G(-t)=G(t)^{-1}\). Strong continuity follows by approximation
+with finite spectral sums.
+
+Its generator is \(\mathcal J\). Indeed, differentiation in each
+mode gives the stated action, and the condition
+\(\mathcal J(u,v)\in \H\) is exactly
+\[
+ \sum_k\nu_k^{1-\sigma}|u_k|^2
+       +\sum_k\nu_k^{-\sigma}|v_k|^2<\infty.
+\]
+For elements satisfying this condition, the spectral difference
+quotients converge in \(\H\), by dominated convergence; conversely,
+convergence in \(\H\) forces this condition by coordinatewise
+differentiation. Thus, \(D(\mathcal J)=D(\mathcal A)\).
+
+The embedding \(H_{L_c}^{-\sigma}\hookrightarrow H_{L_c}^{-1-\sigma}\)
+makes \(\mathcal R\) bounded on \(\H\). Applying the bounded
+perturbation theorem to \(\mathcal J+\mathcal R\) shows that \(\mathcal A\) generates a strongly continuous semigroups.
+% Applying the bounded
+% perturbation theorem to both \(\mathcal J+\mathcal R\) and
+% \(-\mathcal J-\mathcal R\) shows that both \(\mathcal A\) and
+% \(-\mathcal A\) generate strongly continuous semigroups, hence
+% \(\mathcal A\) generates a strongly continuous group
+% \cite[Theorems~III.1.3 and~II.3.11]{EngelNagel2000}.
+
+To define the stochastic convolution as an element of
+$L^2(\Omega;\mathcal H)$, it suffices to verify that
+\[
+    \int_0^t
+    \|S(t-s)B_\eps\|_{\mathscr L_2(U,\mathcal H)}^2\,ds
+    <\infty
+    \qquad\text{for every }t>0.
+\]
+Here $\mathscr L_2(U,\mathcal H)$ denotes the space of
+Hilbert--Schmidt operators from $U$ to $\mathcal H$, with
+\[
+    \|T\|_{\mathscr L_2(U,\mathcal H)}^2
+    :=\sum_{k\geq1}\|Te_k\|_{\mathcal H}^2,
+\]
+where $\{e_k\}_{k \in \N}$ is any orthonormal basis of $U$.
+The Hilbert space Itô isometry then gives
+\[
+    \mathbb E\left\|
+        \int_0^t S(t-s)B_\eps\,dW_s
+    \right\|_{\mathcal H}^2
+    =
+    \int_0^t
+    \|S(t-s)B_\eps\|_{\mathscr L_2(U,\mathcal H)}^2\,ds.
+\]
+For that we return to the original inner
+product \eqref{eq:inner_product}, without the additional factor
+\(\eps^2\) in \eqref{eq:equ_norm}. In this norm,
+\[
+ \|B_\eps\|_{\mathscr L_2(U,\H)}^2
+ =2\eps^{-4}\sum_{k\geq1}\nu_k^{-1-\sigma}<\infty,
+\]
+by Lemma~\ref{lemma_equ_ev} and \(\sum_{n\in\Z^2}(1+|n|^2)^{-1-\sigma}<\infty\).
+Therefore, for every \(t>0\),
+\[
+ \int_0^t\|S(t-s)B_\eps\|_{\mathscr L_2(U,\H)}^2\,ds
+ \leq t\sup_{0\leq r\leq t}\|S(r)\|_{\mathscr L(\H)}^2
+             \|B_\eps\|_{\mathscr L_2(U,\H)}^2<\infty.
+\]
+This finishes the proof.
+% For path continuity, the group property yields
+% \[
+%  \int_0^t S(t-s)B_\eps\,dW_s
+%    =S(t)\int_0^t S(-s)B_\eps\,dW_s.
+% \]
+% The integral on the right has a continuous \(E\)-valued martingale
+% version, because \(S(-s)B_\eps\) is locally square integrable in
+% Hilbert--Schmidt norm. Strong continuity and local boundedness of
+% \(S\) give continuity of the product. The deterministic term
+% \(S(t)X_0\) is continuous almost surely as well.
+\end{proof}
+
+\begin{remark}
+The shift \(c\) is used to construct equivalent norms, not to change
+the drift. The operator in \eqref{eq:generator} contains \(L\),
+not \(L+c\). Different admissible shifts yield the same realization:
+they have equivalent Hilbert norms and the same action on the
+finite spectral core. In particular, this construction does not
+presuppose the positivity of \(L\) that is later deduced from
+stationarity.
+\end{remark}
+
+% \begin{proposition}\label{prop_characterization_invmsr}
+%     Let $\sigma \in (0, 1)$ and $\nu \in \mathcal{P}(\mathcal{H}_L)$. Assume $M_\mu \in H^{-\sigma}(\mathbb{T}^2)$.
+%     Suppose $X(0)\sim \nu$ and that $\nu$ is an invariant measure for the flow 
+%     \begin{equation*}
+%         X(t) = e^{tA}X(0) + \int_0^t e^{(t-s)A} B \, dW_s,
+%     \end{equation*}
+%     which is well-defined by Proposition \ref{prop_invdynm_existence}.
+%     Specifically, we assume $\operatorname{Law}(X(t)) = \nu$ for all $t \ge 0$. Then the following hold:
+%     \begin{enumerate}
+%         \item $L$ is strictly positive.
+%         \item $\|e^{tA}\|_{\mathcal{H}_L} \le M e^{-\omega t}$ for some $\omega > 0, M \ge 1$, and $\nu$ is the unique invariant measure for the flow $X(t)$.
+%         \item $\nu = \mathcal{N}\left(0, \begin{pmatrix} L^{-1} & 0 \\ 0 & \eps^{-2} \end{pmatrix}\right)$.
+%     \end{enumerate}
+% \end{proposition}
+
+% \begin{proof}
+%     From Theorem 11.7 (iii) in \cite{DaPrato_Zabczyk_2014}, the existence of an invariant measure implies that $\sup_{t \ge 0}\operatorname{Tr}(Q_t) < +\infty$. We use this to show that $L$ must be strictly positive. Suppose toward contradiction that $L$ is not strictly positive. Arguing as in Proposition \ref{prop_invdynm_existence}, we see that $L$ has compact resolvent and is bounded from below, hence, there exists a lowest eigenvalue $\mu_0 \le 0$ with a corresponding eigenfunction $e_0$. Recall the explicit solution for $e^{sA}B e_0$ discussed in Proposition \ref{prop_invdynm_existence}. Note, however, that here $e_0$ is an eigenfunction of $L$ and not of $L+c$ for some $c>0$ in contrast to Proposition \ref{prop_invdynm_existence}. If $\mu_0 \le 0$ then $\omega_0 = \frac{\sqrt{1 - 4 \eps^2 \mu_0}}{2 \eps^2} \geq \frac{1}{2\eps^2}$ is positive. Expanding the hyperbolic sine, we see that the solution $c_0(t)$ does not decay in $t$. It either approaches a non zero constant (if $\mu_0 = 0$) or exponentially (if $\mu_0 < 0$). In either case, the time integral diverges:
+%     \begin{equation*}
+%         \int_0^t \| e^{sA}B e_0 \|_{\mathcal{H}_L}^2 \, ds \to \infty \quad \text{as } t \to \infty.
+%     \end{equation*}
+%     Because $\int_0^t \| e^{sA}B e_0 \|_{\mathcal{H}_L}^2 \, ds \leq \operatorname{Tr}(Q_t)$, this contradicts the uniform bound $\sup_{t \ge 0}\operatorname{Tr}(Q_t) < \infty$.
+
+%     It follows that $L$ is strictly positive. Consequently, as established in Proposition \ref{prop_invdynm_existence}, the real parts of the characteristic roots for all modes $m \in \mathbb{N}$ are strictly negative. Consequently, from computations similar to \eqref{esA_computation} and \eqref{bound_first_term}, we can infer that there exist constants $M \ge 1$ and $\omega > 0$ such that the semigroup decays exponentially:
+%     \begin{equation}\label{etA_exponential_decay}
+%         \| e^{tA} u \|_{\mathcal{H}_L} \le M e^{-\omega t} \|u\|_{\mathcal{H}_L} \quad \text{for all } t \ge 0 \text{ and } u \in \mathcal{H_L}.
+%     \end{equation}
+%     From Proposition 11.10 in \cite{DaPrato_Zabczyk_2014}, this strict exponential decay guarantees that $\nu$ is the unique invariant measure for the flow $X(t)$. 
+
+%     Furthermore, Theorem 11.7 in \cite{DaPrato_Zabczyk_2014} establishes that this unique invariant measure takes the form $\mathcal{N}(0, \overline{Q})$, where the covariance operator $\overline{Q}$ is given by 
+%     \begin{equation*}
+%         \overline{Q} u \coloneq \lim_{t \to \infty} \int_0^t e^{sA}B B^* (e^{sA})^* u \, ds \quad \text{for } u \in \mathcal{H}_L.
+%     \end{equation*}
+
+%     We finish the proof by computing $\overline{Q}$ explicitly. Let $\{e_n\}_{n \in \N}$ be an orthonormal basis of $L^2(\T^2)$ of eigenfunctions of $L$ such that $L e_n = \mu_n$. We define the $L$-invariant 2-dimensional subspaces $V_n \coloneqq \operatorname{span}\{ (e_n, 0)^T, (0, e_n)^T \}$ of $\H_L$. Let $\overline{Q}_n \coloneqq \overline{Q}|_{V_n}$. On this subspace, $A$ restricts to the $2 \times 2$ matrix
+%     \begin{equation*}
+%         A_n \coloneqq A|_{V_n} = \begin{pmatrix} 0 & 1 \\ -\eps^{-2} \mu_n & -\eps^{-2} \end{pmatrix}.
+%     \end{equation*}
+%     By the construction of $e^{tA}$ and the $L$-invariance of $V_n$ it follows that $e^{tA}|_{V_n} = e^{tA_n}$. Furthermore, the basis elements of $V_n$ remain orthogonal in $\H_L$. Consequently, the union over $n \in \N$ of $V_n$ spans $\H_L$.
+
+%     \noi
+%     By the properties of the strongly continuous semigroup $e^{tA}$, we can differentiate the matrix exponential to obtain
+%     \begin{equation*}
+%         \frac{d}{dt} \left( e^{t A_n}B B^* e^{t A^*_n} \right) = A_n e^{t A_n}B B^* e^{t A^*_n} + e^{t A_n}B B^* e^{t A^*_n}A^*_n.
+%     \end{equation*}
+%     Integrating both sides with respect to $t$ over $[0, \infty)$ yields
+%     \begin{equation*}
+%         \int_0^\infty \frac{d}{dt} \left( e^{t A_n}B B^* e^{t A^*_n} \right) dt = \int_0^\infty \left( A_n e^{t A_n}B B^* e^{t A^*_n} + e^{t A_n}B B^* e^{t A^*_n}A^*_n \right) dt.
+%     \end{equation*}
+%     By the Fundamental Theorem of Calculus and since due to the exponential decay derived in \eqref{etA_exponential_decay}, the boundary term at infinity vanishes, the left side evaluates to
+%     \begin{equation*}
+%         \left[ e^{t A_n}B B^* e^{t A^*_n} \right]_0^\infty = 0 - B B^* = -B B^*.
+%     \end{equation*}
+%     Because the matrices $A_n$ and $A_n^*$ are independent of time and recalling the definition of $\overline{Q}_n$, we obtain 
+%     \begin{align}\label{lyapunov_eq}
+%         \begin{split}
+%         -B B^* &= A_n \left( \int_0^\infty e^{t A_n}B B^* e^{t A^*_n} dt \right) + \left( \int_0^\infty e^{t A_n}B B^* e^{t A^*_n} dt \right) A^*_n \\
+%         &= A_n \overline{Q}_n + \overline{Q}_n A_n^*.
+%         \end{split}
+%     \end{align}
+%     Direct computations yield the adjoints on $\H_L$: 
+%     \begin{align*}
+%         A^*_n = \begin{pmatrix}
+%             0 & 1 \\
+%             -\eps^{-2} \mu_n & - \eps^{-2}
+%         \end{pmatrix}, \quad \text{and} \quad
+%         B^*_n =  \sqrt{2}\begin{pmatrix}
+%             0 & \eps^{-2} \mu_n^{-1-\sigma}
+%         \end{pmatrix}
+%     \end{align*}
+%     and the unique solution to this $2 \times 2$-matrix equation \eqref{lyapunov_eq} is
+%     \begin{equation*}
+%         \overline{Q}_n = \begin{pmatrix} \mu_n^{-1-\sigma} & 0 \\ 0 & \eps^{-2} \mu_n^{-1-\sigma}\end{pmatrix} = \begin{pmatrix} L^{-1-\sigma} & 0 \\ 0 & \eps^{-2} L^{-1-\sigma}\end{pmatrix}\Bigg|_{V_n}.
+%     \end{equation*}
+%     Since this holds for every subspace $V_n$ which together span $\mathcal{H}_L$, we conclude that 
+%     $$\overline{Q} = \begin{pmatrix} L^{-1-\sigma} & 0 \\ 0 & \eps^{-2} L^{-1-\sigma}\end{pmatrix}.$$
+%     Considering the definition of the inner product \eqref{eq:inner_product}, we can immediately deduce the covariance form, evaluated on $L^2(\T^2) \times L^2(\T^2)$ test functions, is given by $\begin{pmatrix} L^{-1} & 0 \\ 0 & \eps^{-2} \end{pmatrix}$. Consequently, $\nu$ is the stated Gaussian measure. 
+% \end{proof}
+
+%%%GPT Astra high rework of the previous Proposition 
+\begin{proposition}[Characterization of the invariant measure]\label{prop_characterization_invmsr}
+Fix \(0<\sigma<\frac12\), \(\eps>0\), and a real
+\(M\in H^{-\sigma}(\T^2)\), and let \(L=\Lambda+M\) be its form
+realization. Suppose \eqref{eq:frozen_linear_dynamics} has an invariant probability measure
+\(\eta\in\mathcal P(\H^{-\sigma})\). Then:
+\begin{enumerate}
+ \item \emph{Positivity:} \(L\geq mI\) for some \(m>0\), and the forms of \(L\) and
+       \(\Lambda\) are equivalent on \(H^1(\T^2)\).
+ \item \emph{Exponential decay:} There exist \(C\geq1\) and \(\omega>0\) such that the operator norm in $\H$ of the semigroup $S(t)$ has exponential decay:
+ \begin{equation}\label{etA_exponential_decay}
+    \|S(t)\|_{\H}\leq Ce^{-\omega t},
+       \qquad t\geq0.
+ \end{equation}
+ \item \emph{Gaussianity and uniqueness.} The invariant measure is unique and centered Gaussian.
+       Its distributional covariance is
+ \begin{equation}\label{eq:characterized_covariance}
+       \begin{pmatrix}L^{-1}&0\\0&\eps^{-2}I\end{pmatrix}.
+ \end{equation}
+ In particular, for real \(f\in H^\sigma(\T^2)\) and
+ \(g\in H^{1+\sigma}(\T^2)\),
+ \begin{equation}\label{eq:characteristic_functional_mu}
+  \int_{\mathcal H} e^{i\langle u,f\rangle+i\langle v,g\rangle}\,d\eta(u,v)
+   =\exp\!\left[-\frac12\left(
+       \langle L^{-1}f,f\rangle_{L^2_x}
+          +\eps^{-2}\|g\|_{L^2_x}^2\right)\right]
+ \end{equation}
+ where the term on the left is understood by Sobolev duality.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Set
+\[
+ Q_t=\int_0^t S(r)B_\eps B_\eps^*S(r)^*\,dr.
+\]
+
+\emph{Positivity of \(L\):}
+For the positivity argument, choose $c\geq0$ such that
+$L_c=L+cI$ is strictly positive, and equip $\H=\H_L$
+with the inner product \eqref{eq:inner_product}.
+Adjoints and traces in this step refer to this inner product.
+The characterization theorem for invariant measures of linear
+stochastic equations Theorem 11.7 in \cite{DaPrato_Zabczyk_2014}
+implies, from existence of an invariant probability measure, that
+\begin{equation}\label{eq:uniform_trace_bound}
+ \sup_{t\geq0}\operatorname{Tr}_{\mathcal H} Q_t<\infty.
+\end{equation}
+Let $\{e_k\}_{k \in \N}$ be the spectral basis of $L$ with corresponding eigenvalues $\{\lambda_k\}_{k \in \N}$ then by the Hilbert--Schmidt trace identity,
+\[
+ \operatorname{Tr}_{\mathcal H} Q_t
+   =\sum_{k\in\N}\int_0^t\|S(r)B_\eps e_k\|_{\mathcal H}^2\,dr.
+\]
+Suppose \(\lambda_k\leq0\). Write
+\(S(t)B_\eps e_k=(a_k(t)e_k,a_k'(t)e_k)\). Then
+\[
+ \eps^2a_k''+a_k'+\lambda_ka_k=0,\qquad
+ a_k(0)=0,\quad a_k'(0)=\sqrt2\,\eps^{-2}.
+\]
+With
+\[
+ r_\pm=\frac{-1\pm\sqrt{1-4\eps^2\lambda_k}}{2\eps^2},
+\]
+these distinct real roots give
+\[
+ a_k(t)=\frac{\sqrt2}{\eps^2(r_+-r_-)}
+              \left(e^{r_+t}-e^{r_-t}\right).
+\]
+If \(\lambda_k=0\), this equals
+\(\sqrt2(1-e^{-t/\eps^2})\); if \(\lambda_k<0\), it grows
+exponentially. In either case,
+\[
+ \operatorname{Tr}_{\mathcal{H}} Q_t
+ \geq (\lambda_k + c)^{-\sigma}\int_0^t|a_k(r)|^2\,dr
+ \longrightarrow\infty,
+\]
+contrary to \eqref{eq:uniform_trace_bound}.
+Thus, every \(\lambda_k>0\). Since \(L\) is bounded below and has
+compact resolvent, \(m:=\inf_k\lambda_k>0\).
+Moreover,
+\[
+ \frac{m}{m+c}L_c\leq L\leq L_c
+\]
+in the form sense. Lemma~\ref{lemma_equ_ev} proves the asserted
+form equivalence.
+
+\emph{Exponential decay:}
+Since $L\geq mI$, we can choose $c=0$. 
+To prove exponential decay of the semigroup we consider the $\eps$-adjusted energy functional
+\[
+ \mathcal E(u,v)
+   :=\|L^{-\sigma/2}u\|_{L^2_x}^2
+        +\eps^2\|L^{-(1+\sigma)/2}v\|_{L^2_x}^2
+\]
+that is a squared norm equivalent to \eqref{eq:inner_product} on $\H$. 
+
+We first establish the energy estimate on finite spectral
+subspaces. For $N\geq1$, set
+\[
+ \H_N:=\operatorname{span}\{(e_k,0),(0,e_k):1\leq k\leq N\}.
+\]
+The block-diagonal spectral representation of the generator (see the proof of Proposition~\ref{prop:mild})
+implies that $\H_N$ is invariant under $S(t)$. Hence, for
+$X_0\in \H_N$, the deterministic solution
+\[
+ X(t)=S(t)X_0=(u(t),v(t))
+\]
+has the finite expansions
+\[
+ u(t)=\sum_{k=1}^N u_k(t)e_k,
+ \qquad
+ v(t)=\sum_{k=1}^N v_k(t)e_k,
+\]
+where
+\[
+ u_k'(t)=v_k(t),\qquad
+ \eps^2v_k'(t)=-\lambda_k u_k(t)-v_k(t).
+\]
+We refer to such a solution as a finite spectral solution.
+All subsequent differentiations are therefore ordinary
+differentiations of finite sums. Crucially, the estimates
+below are independent of $N$ and of $X_0$.
+
+Put
+\[
+ w(t)=L^{-(1+\sigma)/2}u(t),\qquad
+ z(t)=L^{-(1+\sigma)/2}v(t).
+\]
+Then
+\[
+ w'(t)=z(t),\qquad \eps^2z'(t)=-Lw(t)-z(t),
+\]
+and the energy of the finite spectral solution is
+\[
+ \mathcal E(X(t)) 
+ =\|L^{1/2}w(t)\|_{L^2_x}^2
+    +\eps^2\|z(t)\|_{L^2_x}^2.
+\]
+For \(\delta>0\), define
+\[
+ \mathcal V(t)
+   :=\mathcal E (X(t)) +2\delta\eps^2\langle w(t),z(t)\rangle_{L^2_x}
+                    +\delta\|w(t)\|_{L^2_x}^2.
+\]
+Choose \(\delta\eps^2\leq\frac12\) and
+\(\delta\eps/\sqrt m\leq\frac12\).
+Cauchy--Schwarz and \(L\geq mI\) give
+\[
+ \frac12\mathcal E(X(t))\leq\mathcal V(t)
+       \leq\left(\frac32+\frac{\delta}{m}\right)\mathcal E(X(t)).
+\]
+Direct differentiation yields
+\[
+ \mathcal V'(t)
+  =-2(1-\delta\eps^2)\|z(t)\|_{L^2_x}^2
+      -2\delta\|L^{1/2}w(t)\|_{L^2_x}^2
+  \leq-\min\{\eps^{-2},2\delta\}\mathcal E(X(t)).
+\]
+
+Set
+\[
+ K:=\frac32+\frac{\delta}{m},
+ \qquad q:=\min\{\eps^{-2},2\delta\}>0.
+\]
+The preceding estimates imply
+\[
+ \mathcal V'(t)
+ \leq-q\mathcal E(X(t))
+ \leq-\frac{q}{K}\mathcal V(t).
+\]
+Gronwall's inequality therefore yields
+\[
+ \mathcal E(S(t)X_0)
+ \leq 2\mathcal V(t)
+ \leq 2K e^{-qt/K}\mathcal E(X_0).
+\]
+By equivalence of norms,
+\[
+ \|S(t)X_0\|_{\mathcal H}
+ \les \sqrt{2K} e^{-qt/(2K)}\|X_0\|_{\mathcal H}
+\]
+for $X_0\in\bigcup_{N\geq1}\H_N$.
+
+\noindent
+The constants are independent of the spectral cutoff.
+Since $\bigcup_{N\geq1}\H_N$ is dense in $\H$ and $S(t)$
+is bounded for each fixed $t\geq0$, this estimate extends
+to every $X_0\in\H$. Taking the supremum over
+$\|X_0\|_{\mathcal H}=1$ proves
+\[
+ \|S(t)\|_{\mathcal H}
+ \leq C e^{-\omega t},
+\]
+for some $C\geq1$ and $\omega>0$.
+
+
+\emph{Gaussianity and uniqueness:}
+Utilizing the exponential decay we can apply Proposition 11.10 in \cite{DaPrato_Zabczyk_2014} to obtain that $\eta$ is the unique invariant measure of \eqref{eq:frozen_linear_dynamics}. Then, Theorem 11.7 in \cite{DaPrato_Zabczyk_2014} implies that $\eta = \mathcal{N}(0, Q_\infty)$ with $Q_\infty = \lim_{t\to\infty} Q_t$.
+Finally, it remains to explicitly characterize $Q_\infty$. 
+The vectors
+\[
+ F_k=(\lambda_k^{\sigma/2}e_k,0),\qquad
+ G_k=(0,\lambda_k^{(1+\sigma)/2}e_k)
+\]
+form an orthonormal basis of \(\H\). The orthogonal planes
+\(\operatorname{span}\{F_k,G_k\}\) reduce both \(S(t)\) and
+\(B_\eps B_\eps^*\). On the \(k\)-th plane, the drift and diffusion
+matrices in this orthonormal basis are
+\[
+ \widetilde A_k=
+ \begin{pmatrix}
+ 0&\lambda_k^{1/2}\\
+ -\eps^{-2}\lambda_k^{1/2}&-\eps^{-2}
+ \end{pmatrix},\qquad
+ \widetilde B_k=
+ \begin{pmatrix}0\\ \sqrt2\,\eps^{-2}\lambda_k^{-(1+\sigma)/2}\end{pmatrix}.
+\]
+Thus, the covariance block \(C_k\) solves the usual Euclidean
+Lyapunov equation
+\begin{equation}\label{lyapunov_eq}
+ \widetilde A_kC_k+C_k\widetilde A_k^{\mathsf T}
+       +\widetilde B_k\widetilde B_k^{\mathsf T}=0.
+\end{equation}
+A direct substitution gives
+\[
+ C_k=\begin{pmatrix}
+       \lambda_k^{-1-\sigma}&0\\
+       0&\eps^{-2}\lambda_k^{-1-\sigma}
+     \end{pmatrix}.
+\]
+There are no cross-mode covariance blocks, because the covariance
+integrand is block diagonal. Consequently, the covariance operator
+relative to the inner product of \(\H\) is
+\begin{equation}\label{eq:hilbert_covariance}
+ Q_\infty=
+ \begin{pmatrix}
+    L^{-1-\sigma}&0\\
+    0&\eps^{-2}L^{-1-\sigma}
+ \end{pmatrix}.
+\end{equation}
+For \(X=(u,v)\sim\mathcal N(0,Q_\infty)\), returning from the
+orthonormal coordinates to the distributional coordinates yields
+\[
+ \mathbb E[\langle u,e_k\rangle\langle u,e_j\rangle]
+     =\delta_{kj}\lambda_k^{-1},\qquad
+ \mathbb E[\langle v,e_k\rangle\langle v,e_j\rangle]
+     =\delta_{kj}\eps^{-2},
+ \qquad
+ \mathbb E[\langle u,e_k\rangle\langle v,e_j\rangle]=0.
+\]
+This proves \eqref{eq:characteristic_functional_mu} for finite
+spectral test functions. Their density in
+\(H^\sigma(\T^2)\times H^{1+\sigma}(\T^2)\), established in Lemma~\ref{lem:eigenfunction_regularity}, together with bounded convergence
+on the left and continuity of the quadratic form on the right,
+proves the identity for all stated test functions.
+It is \eqref{eq:characterized_covariance}, rather than
+\eqref{eq:hilbert_covariance}, that denotes the distributional
+covariance of the invariant field.
+\end{proof}
+
+
+\subsection{Uniqueness by self-consistency}
+Proposition \ref{prop_characterization_invmsr} reduces the remaining
+argument to a self-consistency problem.  Namely, every admissible invariant law
+has position marginal $\mathcal N(0,L^{-1})$. Utilizing this self-consistency relation we show that $M_\mu = 0$. This directly implies that $\Lambda = L$ which proves uniqueness. 
+The following lemma identifies this
+renormalized covariance diagonal and improves the regularity of
+$M_\mu$ to $L^2(\T^2)$. 
+
+
+%%%%GPT writing assistance 
+\begin{lemma}\label{lem:renormalized_variance_convergence}
+    Let $\sigma \in (0, \frac 12)$ and $u \sim \mathcal{N}(0, L^{-1})$ be a centered Gaussian random distribution. Assume that $M_\mu \in H^{-\sigma}(\T^2)$ and set $L = \Lambda + M_\mu$.
+
+    Set
+    \[
+        \Gamma_N
+        \coloneqq
+        \{n\in\Z^2:\langle n\rangle\leq N\},
+        \qquad
+        \P_Nf
+        \coloneqq
+        \sum_{n\in\Gamma_N}
+        \langle f,b_n\rangle_{L^2_x}b_n,
+    \]
+    where \(b_n(x)=e^{in\cdot x}\), and define
+    \[
+        M_N
+        \coloneqq
+        \mathbb E_\mu[(\P_Nu)^2]
+        -
+        \sum_{n\in\Gamma_N}\langle n\rangle^{-2}.
+    \]
+    Then $M_\mu\in L^2(\T^2)$ and
+    $M_N\to M_\mu$ strongly in $L^2(\T^2)$.
+    More precisely, writing $D=L^{-1}-\Lambda^{-1}$, we have
+    \begin{equation}\label{eq:M_mu_expansion}
+        M_\mu
+        =
+        \lim_{N\to\infty}
+        \sum_{n\in\Gamma_N}\P_N(Db_n)b_{-n}
+        =
+        \lim_{N\to\infty}
+        \sum_{n\in\Gamma_N}(Db_n)b_{-n},
+    \end{equation}
+    where both limits are taken in $L^2(\T^2)$.
+\end{lemma}
+
+\begin{proof}
+    Since the covariance form of \(u\) is \(L^{-1}\), we have
+    \[
+        \mathbb E_\mu
+        \left[
+            \langle u,b_n\rangle_{L^2_x}
+            \langle u,b_m\rangle_{L^2_x}
+        \right]
+        =
+        \langle L^{-1}b_{-n},b_m\rangle_{L^2_x}.
+    \]
+    Consequently, after relabeling \(n\mapsto-n\),
+    \[
+        \mathbb E_\mu[(\P_Nu)^2]
+        =
+        \sum_{n\in\Gamma_N}
+        \P_N(L^{-1}b_n)b_{-n}.
+    \]
+    Moreover,
+    \[
+        \sum_{n\in\Gamma_N}
+        \P_N(\Lambda^{-1}b_n)b_{-n}
+        =
+        \sum_{n\in\Gamma_N}\langle n\rangle^{-2}.
+    \]
+    Hence,
+    \begin{equation}\label{eq:renormalized_variance_D}
+        M_N
+        =
+        \sum_{n\in\Gamma_N}
+        \P_N(Db_n)b_{-n}.
+    \end{equation}
+
+    For \(m\in\Z^2\), define
+    \[
+        \Gamma_N(m)
+        \coloneqq
+        \{n\in\Z^2:
+            n\in\Gamma_N,\ n+m\in\Gamma_N
+        \}.
+    \]
+    Taking the \(m\)-th Fourier coefficient in
+    \eqref{eq:renormalized_variance_D} gives
+    \begin{equation}\label{eq:renormalized_variance_fourier}
+        \widehat{M_N}(m)
+        =
+        \sum_{n\in\Gamma_N(m)}
+        \langle Db_n,b_{n+m}\rangle_{L^2_x}.
+    \end{equation}
+    The resolvent identities, understood in the quadratic-form sense,
+    yield
+    \begin{align*}
+        D
+        &=
+        -L^{-1}M_\mu\Lambda^{-1}
+        \\
+        &=
+        -\Lambda^{-1}M_\mu\Lambda^{-1}
+        +
+        \Lambda^{-1}M_\mu
+        L^{-1}M_\mu\Lambda^{-1}.
+    \end{align*}
+    Therefore,
+    \[
+        \widehat{M_N}(m)
+        =
+        -a_N(m)\widehat M_\mu(m)+R_N(m),
+    \]
+    where
+    \[
+        a_N(m)
+        \coloneqq
+        \sum_{n\in\Gamma_N(m)}
+        \langle n\rangle^{-2}
+        \langle n+m\rangle^{-2}
+    \]
+    and
+    \begin{align*}
+        R_N(m)
+        \coloneqq
+        \sum_{n\in\Gamma_N(m)}
+        &\langle n\rangle^{-2}
+        \langle n+m\rangle^{-2}
+        \left\langle
+            L^{-1}(M_\mu b_n),
+            M_\mu b_{n+m}
+        \right\rangle_{L^2_x}.
+    \end{align*}
+
+    We first consider the linear term. Define
+    \[
+        a(m)
+        \coloneqq
+        \sum_{n\in\Z^2}
+        \langle n\rangle^{-2}
+        \langle n+m\rangle^{-2}.
+    \]
+    Note, the following standard convolution estimate
+    \begin{align}\label{eq:conv_ineq}
+        \sum_{n \in \mathbb{Z}^2} \langle n \rangle^{-\alpha} \langle n + m \rangle^{-\alpha} \lesssim 
+        \begin{cases}
+             \jb{m}^{2-2\alpha} \quad \text{if $\alpha \in (1,2)$}
+             \\
+             \jb{m}^{-2} (1+\ln(\jb{m}^2)) \quad \text{if $\alpha = 2$.}
+        \end{cases}
+    \end{align}
+    A proof is provided in Appendix Lemma \ref{lemma:conv_ineq}.
+    This convolution estimate yields
+    \begin{align}\label{eq:a_m_uniform_bound}
+        \sup_{m\in\Z^2}a(m)<\infty.
+    \end{align}
+    For every fixed \(m\), we have
+    \[
+        a_N(m)\xlongrightarrow[]{N \to \infty} a(m),
+        \qquad \text{and} \qquad
+        0\leq a_N(m)\leq a(m).
+    \]
+    In particular, $\sup_m\langle m\rangle^\sigma a(m)<\infty$,
+    so the assumption $M\in H^{-\sigma}(\T^2)$ implies
+    \[
+        \sum_{m\in\Z^2}
+        a(m)^2|\widehat M_\mu(m)|^2
+        \lesssim
+        \|M_\mu\|_{H^{-\sigma}_x}^2<\infty.
+    \]
+    Dominated convergence therefore gives
+    $a_N\widehat M\to a\widehat M$ in $\ell^2(\Z^2)$.
+
+
+    It remains to treat \(R_N\). Multiplication by a Fourier mode
+    satisfies
+    \begin{equation}\label{eq:modulation_Hminus_sigma}
+        \|M_\mu B_k\|_{H^{-\sigma}_x}
+        \lesssim
+        \langle k\rangle^\sigma
+        \|M_\mu\|_{H^{-\sigma}_x}.
+    \end{equation}
+    Indeed, this follows directly from the standard algebraic inequality $\langle x+y \rangle^s \le 2^{-\frac{s}{2}} \langle x \rangle^s \langle y \rangle^{-s}$ for $s < 0$ after shifting Fourier frequencies.
+
+    Next, we note that we obtain sufficient smoothing through the operator $L$: By Corollary~\ref{cor:equ_norms}, we have that $\Lambda^s$ and $L^s$ are form equivalent for all $s\in [-1,1]$.
+    Furthermore, since $L^{-s}$ is a bounded for $s \geq 0$ and a self-adjoint operator on $L^2(\T^2)$, we have that $\langle L^{-s} u, u \rangle_{L^2_x} \les \|u\|^2_{L^2_x}$.
+    Combined with \eqref{eq:modulation_Hminus_sigma}, the duality paring of $H^{\sigma}(\T^2)$ and $H^{-\sigma}(\T^2)$, these considerations yield:
+    \begin{align*}
+        \left|
+        \left\langle
+            L^{-1}(M_\mu b_n),
+            M_\mu b_{n+m}
+        \right\rangle
+        \right|
+        &\leq
+        \|L^{-1}(M_\mu b_n)\|_{H^\sigma_x}
+        \|M_\mu b_{n+m}\|_{H^{-\sigma}_x}
+        \\
+        &\lesssim
+        \|M_\mu b_n\|_{H^{-1}_x}
+        \|M_\mu b_{n+m}\|_{H^{-\sigma}_x}
+        \\
+        &\lesssim
+        \langle n\rangle^\sigma
+        \langle n+m\rangle^\sigma
+        \|M_\mu\|_{H^{-\sigma}_x}^2.
+    \end{align*}
+    Hence, using the convolution estimate in \eqref{eq:conv_ineq} with $\alpha = 2-\sigma$, we have uniformly in \(N \in \N\),
+    \begin{align}\label{eq:R_N_uniform_bound}
+        |R_N(m)|
+        &\lesssim
+        \|M_\mu\|_{H^{-\sigma}_x}^2
+        \sum_{n\in\Z^2}
+        \langle n\rangle^{-2+\sigma}
+        \langle n+m\rangle^{-2+\sigma}
+        \nonumber\\
+        &\lesssim
+        \|M_\mu\|_{H^{-\sigma}_x}^2
+        \langle m\rangle^{-2+2\sigma}.
+    \end{align}
+    Thus, the full series defining $R(m)$ is absolutely
+    convergent for every $m$, and $R_N(m)\to R(m)$.
+    Since $\sigma<\frac12$,
+    \[
+        \sum_{m\in\Z^2}\langle m\rangle^{-4+4\sigma}<\infty.
+    \]
+    Dominated convergence consequently gives
+    $R_N\to R$ in $\ell^2(\Z^2)$.
+
+    It follows by Parseval's identity that $M_N$ converges
+    in $L^2(\T^2)$ to $M_\mu$. Hence, $M_\mu\in L^2(\T^2)$ and
+    $M_N\to M_\mu$ strongly in $L^2(\T^2)$.
+
+
+    Finally, for
+    \[
+        \widetilde M_N
+        =
+        \sum_{n\in\Gamma_N}(Db_n)b_{-n},
+    \]
+    the same Fourier computation applies with
+    $\Gamma_N(m)$ replaced by $\Gamma_N$ in the definitions
+    of $a_N(m)$ and $R_N(m)$.
+    The pointwise limits remain $a(m)$ and $R(m)$, and
+    all the preceding bounds remain valid.
+    The same dominated-convergence argument therefore
+    gives $\widetilde M_N\to M$ in $L^2(\T^2)$, proving
+    both limits in \eqref{eq:M_mu_expansion}.
+
+\end{proof}
+
+
+Finally, we are prepared to prove the conditional uniqueness of the invariant measure of the SDMFW.
+\begin{proof}[Proof of Theorem \ref{theorem:uniqueness_SDMFW}]
+    Suppose there exists an invariant measure $\mu \in \mathcal{W}$ of the \eqref{eq:SDMFW}, and set $M_\mu=\mathbb E_\mu[\wick{u^2}]$ and $L=\Lambda+M_\mu$. 
+    Due to the equivalence of Hilbert spaces established in Corollary~\ref{cor:equ_norms} we can apply Proposition~\ref{prop_characterization_invmsr} to infer that $L$ is strictly positive and that $\mu = \mathcal{N}(0, L^{-1}) \otimes \mathcal{N}(0, \varepsilon^{-2}I)$. 
+    
+    Applying Lemma \ref{lem:renormalized_variance_convergence}
+    to the position marginal, we obtain
+    $M_\mu\in L^2(\T^2)$ and
+    \[
+        \widetilde M_N
+        \coloneqq
+        \sum_{n\in\Gamma_N}
+        (L^{-1}-\Lambda^{-1})b_n\,b_{-n}
+        \longrightarrow M_\mu
+        \qquad\text{in }L^2(\T^2).
+    \]
+
+    Since $M_\mu$ is real-valued, the resolvent identity
+    $L^{-1}-\Lambda^{-1}=-L^{-1}M_\mu\Lambda^{-1}$
+    gives, for every $N$,
+    \begin{align*}
+        \langle\widetilde M_N,M_\mu\rangle_{L^2_x}
+        &=
+        \sum_{n\in\Gamma_N}
+        \left\langle
+            (L^{-1}-\Lambda^{-1})b_n,M_\mu b_n
+        \right\rangle_{L^2_x}\\
+        &=
+        -\sum_{n\in\Gamma_N}\langle n\rangle^{-2}
+        \left\langle
+            L^{-1}(M_\mu b_n),M_\mu b_n
+        \right\rangle_{L^2_x}\\
+        &\leq0.
+    \end{align*}
+    Here all sums are finite, $M_\mu b_n\in L^2(\T^2)$,
+    and the last inequality follows from positivity of
+    $L^{-1}$.
+    Passing to the limit using the strong $L^2$ convergence
+    of $\widetilde M_N$ yields
+    \[
+        \|M_\mu\|_{L^2_x}^2
+        =
+        \lim_{N\to\infty}
+        \langle\widetilde M_N,M_\mu\rangle_{L^2_x}
+        \leq0.
+    \]
+    Consequently, $M_\mu=0$, so $L=\Lambda$ and
+    $\mu=\rho_\eps$.
+
+    Conversely, the chosen Wick ordering gives
+    $\mathbb E_{\rho_\eps}[\wick{u^2}]=0$.
+    The stationary linear damped-wave dynamics with
+    position covariance $\Lambda^{-1}$ and velocity
+    covariance $\eps^{-2}I$ therefore provide a stationary
+    solution of \eqref{eq:SDMFW} with law $\rho_\eps$.
+    Hence, $\rho_\eps$ is the unique invariant measure
+    in $\mathcal W$.
+\end{proof}
+
+
+%%%% Author's version of this section before GPT's rework 
+% \subsection{Convergence of SDMFW's Invariant Measure to the SMFW's Invariant Measure}\label{sec_invdynamics_SKA}
+
+% As discussed in Section \ref{Preperation_Invariant_Measure}, we show that the SKA also occurs for the respective probability measures.
+% Let $\sigma > 0$ and $\pi: \mathcal{H}^{-\sigma}(\T^2) \to H^{-1-\sigma}(\T^2)$ be the canonical projection onto the second component.
+% To prove convergence, we define a random variable $\psi_\eps \sim \mathcal{N}(0, \eps^{-2}I) = \pi_* \rho_\eps$ on $H^{-1-\sigma}(\T^2)$. Let $\{h_n\}_{n \in \Z^2}$ be a family of independent random variables such that for $n \neq 0$, $h_n$ is a complex-valued centered Gaussian random variable with variance $2$ satisfying $h_{-n} = \overline{h_n}$ for $n \in \mathcal{J}$, and for $n = 0$, $h_0$ is a real-valued centered Gaussian random variable with variance $1$. We assume these are independent of the cylindrical Wiener process $W_t$ defined in \eqref{Wiener1}.
+% Define
+% \begin{align*}
+%     \psi_\eps(x) \coloneqq  \eps^{-1}h_0 + \frac{1}{\sqrt{2}}\sum_{n \in \Z^2 \setminus\{0\}} \eps^{-1} h_n e^{i n \cdot x} \sim \mathcal{N}(0, \eps^{-2}I).
+% \end{align*}
+
+% First, we show that $(\P_N \psi_\eps)_*\mathbb{P}$ converges weakly to $(\psi_\eps)_*\mathbb{P} = \pi_* \rho_\eps$ as $N \to \infty$, where $\P_N$ is the truncated Fourier projection defined in \eqref{P_N}. This weak convergence is implied by the following standard statement.
+
+% \begin{lemma}\label{prop_measure_well_definedness}
+%     For fixed $\eps \in (0,1]$, we have
+%     \begin{align*}
+%         \P_N \psi_\eps \rightarrow \psi_\eps \quad \text{in } L^2(\Omega; H^{-1-\sigma}(\T^2)),
+%     \end{align*}
+%     as $N \to \infty$.
+% \end{lemma}
+% \begin{proof}
+%     For $s \geq 0$ and $N \in \N$, define the truncated random variable
+%     \begin{align}\label{truncated_psi}
+%         \psi_{N,s}(x) \coloneq \sum_{\substack{n \in \Z^2 \\ \jb{n} \leq N}} \frac{h_n}{\jb{n}^s} e^{ i n \cdot x},
+%     \end{align}
+%     where $h_n$ is defined as above. Let $\sigma \in \R$. We will show that $\psi_{N,s}$ is a Cauchy sequence in $L^2(\Omega; H^{\sigma}(\T^2))$. Let $M, N \in \N$ with $M \leq N$. Using the independence of $h_n$ and the fact that $\EV{|h_n|^2} \leq 2$, we compute the expectation of the difference
+%     \begin{align*}
+%         \EV{\|\psi_{N,s} - \psi_{M,s} \|^2_{H^\sigma_x}} 
+%         &= 
+%         \sum_{\substack{n \in \Z^2 \\ M < \jb{n} \leq N}} \jb{n}^{2\sigma} \EV{\Big| \frac{h_n}{\jb{n}^s} \Big|^2}
+%         \\ &\leq
+%         2 \sum_{\substack{n \in \Z^2 \\ M < \jb{n} \leq N}} \jb{n}^{2 \sigma - 2 s}.
+%     \end{align*}
+%     This sum converges if and only if $\sigma < s - 1$.
+%     Hence, for any $\sigma <  s-1$, the limit $\lim_{N\to \infty}\psi_{N,s}$ is well-defined in $L^2(\Omega; H^{\sigma}(\T^2))$. Since our target space requires $-1-\sigma < -1$, the statement follows directly. 
+% \end{proof}
+
+% We are now ready to prove the convergence of the probability measures. 
+
+% \begin{theorem}
+%     Let $\sigma > 0$, $\eps > 0$, and $\pi: \mathcal{H}^{-\sigma}(\T^2) \to H^{-1-\sigma}(\T^2)$ be the canonical projection onto the second component. Let $\rho_\eps \coloneqq \mathcal{N}\left(0, \begin{pmatrix}\Lambda^{-1} & 0 \\ 0 & \eps^{-2}\end{pmatrix}\right)$ and $\rho_0 \coloneqq \mathcal{N}(0, \Lambda^{-1})$.
+%     Then $\rho_\eps \rightarrow \rho_0$ as $\eps \to 0$ in the sense of Definition \ref{def_invdynamics_SKA}.
+% \end{theorem}
+% \begin{proof}
+%     Let $f \in C_0(H^{-1-\sigma}(\T^2))$ be arbitrary. By the definition, $f$ is bounded, thus there exists $C>0$ such that $|f| \leq C$. Furthermore, for any $\delta > 0$, there exists a $K> 0$ such that $|f(u)| < \delta$ for all $\|u\|_{H^{-1-\sigma}_x} > K$. 
+    
+%     Using the fact that $(\pi_* \rho_\eps)$ is a probability measure, therefore it is bounded by $1$, a Chebyshev-like inequality, and the fact that $(\P_N \psi_\eps)_* \mathbb{P}$ converges weakly to $(\psi_\eps)_* \mathbb{P}$ (by Lemma \ref{prop_measure_well_definedness}), we obtain  
+%     \begin{align*}
+%     \begin{split}
+%        \bigg| \int_{H^{-1-\sigma}(\T^2)} f(u) \, d(\pi_* \rho_\eps)(u) \bigg| 
+%        &\leq \delta (\pi_* \rho_\eps)(\|u\|_{H^{-1-\sigma}_x} > K) +  C (\pi_* \rho_\eps)\big( \|u \|_{H^{-1-\sigma}_x} \leq K \big) 
+%        \\
+%        &= \delta + C(\pi_* \rho_\eps)\big( \|u \|_{H^{-1-\sigma}_x} \leq K \big)
+%        \\
+%         &\leq \delta + C e^{K^2} \int_{H^{-1-\sigma}(\T^2)} e^{-\|u \|^2_{H^{-1-\sigma}_x}} \, d(\psi_\eps)_*\mathbb{P}(u)
+%         \\ &=
+%         \delta + C e^{K^2} \lim_{N \to \infty}\int_{\Omega}e^{-\|\P_N \psi_\eps(\omega) \|^2_{H^{-1-\sigma}_x}} \, d \mathbb{P}(\omega).
+%     \end{split}
+%     \end{align*}
+    
+%     To compute the last term, we denote $\mathcal{J}_N \coloneq \{ n \in \mathcal{J} \mid \jb{n} \leq N \}$. This is a finite subset of $\Z^2$. Furthermore, by the cylindrical construction of the random variables $h_n$, namely that $h_{-n} = \overline{h_n}$ for $n \in \mathcal{J}$, we have $|h(n)|^2 = |h(-n)|^2$. Consequently, we obtain
+%     \begin{align*}
+%         \lim_{N \to \infty} &\int_{\Omega} e^{-\|\P_N \psi_\eps(\omega) \|^2_{H^{-1-\sigma}_x}} \, d \mathbb{P}(\omega)
+%         \\
+%         &= \lim_{N \to \infty} \int_\Omega \exp\left(-\jb{0}^{-2-2\sigma} \eps^{-2} |h_0(\omega)|^2 - \sum_{n \in \mathcal{J}_N} \jb{n}^{-2-2\sigma} \eps^{-2} |h_n(\omega)|^2 \right) \, d\mathbb{P}({\omega})
+%         \\
+%         &= \lim_{N \to \infty} (1+ 2\eps^{-2})^{-\frac{1}{2}} \prod_{n \in \mathcal{J}_N} (1+ 2\eps^{-2} \jb{n}^{-2-2\sigma})^{-1}
+%         \\ 
+%         &= (1+ 2\eps^{-2})^{-\frac{1}{2}} \lim_{N \to \infty} \prod_{n \in \mathcal{J}_N}\Big(1 - \frac{2}{\eps^2 \jb{n}^{2+2\sigma} +2}\Big) . 
+%     \end{align*}
+
+%     % We note two technical points regarding the previous estimate. The first inequality arises because the domain of integration on the left-hand side is restricted to $\|u\|_{H^{-1-\sigma}_x} < \infty$, while the right-hand side is an integral over the entire space. Second, the variable $x$ represents the coefficient vector in $\R^{|\Z^2_N|}$ indexed by $n \in \Z^2_N$.
+%     \noi
+%     This infinite product converges to a strictly positive number if and only if the series
+%     \begin{align*}
+%         \sum_{n \in \Z^2} \frac{2}{\eps^2 \jb{n}^{2+2\sigma} + 2} < \infty
+%     \end{align*}
+%     converges. This holds true because $2 + 2\sigma > 2$. Note, that the product converges for all $\eps \in [0,1]$, since for $\eps = 0$ the product equals $0$. Finally, as $(1+ 2\eps^{-2})^{-\frac{1}{2}} \to 0$ for $\eps \to 0$ and since the infinite product is uniformly bounded in $\eps$ the final expression converges to $0$. Consequently, the integral converges to $0$, implying that $ \rho_\eps \rightarrow \rho_0$ in the sense of Definition \ref{def_invdynamics_SKA}.
+% \end{proof}
+
+
+%%%%GPT Astra high streamlined the original proof (which can be found directly above)
+\section{Small-mass behavior of the invariant measures}\label{sec_invdynamics_SKA}
+
+Recall that
+\[
+    \rho_\eps
+    =
+    \mathcal{N}(0, \Lambda^{-1}) \otimes \mathcal{N}(0, \varepsilon^{-2}I),
+    \qquad \text{and} \qquad
+    \rho_0=\mathcal N(0,\Lambda^{-1}).
+\]
+The uniqueness of the invariant measure $\rho_0$ of the \eqref{eq:SMFH} follows analogous to the uniqueness of the invariant measure of the \eqref{eq:SDMFW}.
+Concerning the Smoluchowski-Kramers type behavior of these invariant measures, the position marginal of \(\rho_\eps\) equals \(\rho_0\) for every
+\(\eps>0\). By contrast, the velocity marginal escapes to infinity as \(\eps\to0\). This will be demonstrated rigorously in the following proof.
+
+\begin{proof}[Proof of Theorem \ref{theorem:convergence_uniqueness_SMFH}]
+%%%%GPT Astra High generalization of self-consistency argument to the SMFH
+    We first establish uniqueness of the invariant measure of the
+\eqref{eq:SMFH}. Since this proof follows the exact same steps presented in Section~\ref{Chpt_Invariant_Dynamics} we only discuss the important steps. 
+Let $\mu\in\mathcal W_0$ be an invariant measure,
+and set $M_\mu\coloneqq\mathbb E_\mu[\wick{u^2}]$ and
+$L\coloneqq\Lambda+M_\mu$. By stationarity, the equation reduces to
+\[
+    du(t)=-Lu(t)\,dt+\sqrt{2}\,dW_t.
+\]
+Lemmas \ref{lem:relative_bound} and \ref{lemma_equ_ev} provide a
+self-adjoint realization of $L$ with compact resolvent. If
+$Le_j=\lambda_j e_j$ in a real orthonormal eigenbasis, the
+corresponding coordinates satisfy
+\[
+    d\langle u(t),e_j\rangle
+    =-\lambda_j\langle u(t),e_j\rangle\,dt+\sqrt{2}\,d\beta_j(t),
+\]
+where the $\beta_j$ are independent standard Brownian motions.
+The existence of an invariant probability measure excludes
+$\lambda_j\leq0$, since the corresponding scalar equation has
+no invariant probability measure. Thus, $L$ is strictly positive.
+Every finite collection of these coordinates consequently has
+the unique invariant law given by the product of the centered
+Gaussian measures with variances $\lambda_j^{-1}$. It follows
+that $\mu=\mathcal N(0,L^{-1})$, with covariance understood in
+the distributional sense. The remainder of the argument is
+identical to the self-consistency argument in the proof of
+Theorem \ref{theorem:uniqueness_SDMFW}: Lemma
+\ref{lem:renormalized_variance_convergence} yields
+$M_\mu\in L^2(\T^2)$, and the resolvent identity together with
+positivity of $L^{-1}$ gives $M_\mu=0$. Hence, $L=\Lambda$ and
+$\mu=\rho_0$. Conversely, the chosen Wick ordering gives
+$\mathbb E_{\rho_0}[\wick{u^2}]=0$, so the stationary
+Ornstein-Uhlenbeck process with drift $-\Lambda$ and covariance
+$\Lambda^{-1}$ is a stationary solution of \eqref{eq:SMFH}.
+Therefore, $\rho_0$ is the unique invariant measure in
+$\mathcal W_0$.
+
+%%%%%
+Next, we consider the stated Smoluchowski-Kramers type behavior.
+    The identity
+    \[
+        (\pi_1)_*\rho_\eps=\rho_0
+    \]
+    follows immediately from the definition of \(\rho_\eps\).
+
+    It remains to consider the velocity marginal. Let
+    \(\psi_1\) be a centered Gaussian random distribution whose
+    covariance form on \(L^2(\T^2)\) is the identity. 
+    Let $\{h_n\}_{n \in \Z^2}$ be a family of random variables that are independent for $n \in (\Z_+\times \{0\}) \cup (\Z\times \Z_+) \cup\{(0, 0)\}$ such that for $n \neq 0$, $h_n$ is a complex-valued centered Gaussian random variable with variance $2$ satisfying $h_{-n} = \overline{h_n}$, and for $n = 0$, $h_0$ is a real-valued centered Gaussian random variable with variance $1$.
+    Using these Gaussian variables, it may be realized as
+    \[
+        \psi_1(x)
+        =
+        h_0
+        +
+        \frac{1}{\sqrt{2}}
+        \sum_{n\in\Z^2\setminus\{0\}}
+        h_ne^{in\cdot x}.
+    \]
+    Since \(\sigma>0\),
+    \[
+        \mathbb E\big[
+            \|\psi_1\|_{H^{-1-\sigma}_x}^2
+        \big]
+        =
+        \sum_{n\in\Z^2}
+        \langle n\rangle^{-2-2\sigma}
+        <\infty.
+    \]
+    Hence, the series defining \(\psi_1\) converges in
+    \(L^2(\Omega;H^{-1-\sigma}(\T^2))\).
+
+    For \(\eps>0\), define
+    \[
+        \psi_\eps\coloneqq\eps^{-1}\psi_1.
+    \]
+    Then \(\psi_\eps\) has covariance form \(\eps^{-2}I\), and
+    therefore
+    \[
+        \operatorname{Law}(\psi_\eps)
+        =
+        (\pi_2)_*\rho_\eps.
+    \]
+    Moreover,
+    \[
+        \|\psi_\eps\|_{H^{-1-\sigma}_x}
+        =
+        \eps^{-1}
+        \|\psi_1\|_{H^{-1-\sigma}_x}.
+    \]
+    The Gaussian field \(\psi_1\) is nonzero almost surely. Indeed,
+    \(\psi_1=0\) would in particular imply \(h_0=0\), which has
+    probability zero. Consequently,
+    \[
+        \|\psi_\eps\|_{H^{-1-\sigma}_x}
+        \longrightarrow\infty
+        \qquad\text{almost surely as }\eps\to0.
+    \]
+
+    Let
+    \[
+        f\in
+        C_{\mathrm{rv}}
+        (H^{-1-\sigma}(\T^2)).
+    \]
+    By the radial-vanishing property,
+    \[
+        f(\psi_\eps)\longrightarrow0
+        \qquad\text{almost surely}.
+    \]
+    Since \(f\) is bounded, the dominated convergence theorem gives
+    \begin{align*}
+        \int_{H^{-1-\sigma}(\T^2)}
+        f(v)\,d((\pi_2)_*\rho_\eps)(v)
+        = \mathbb E[f(\psi_\eps)]
+        \longrightarrow0.
+    \end{align*}
+    This proves the asserted convergence.
+\end{proof}

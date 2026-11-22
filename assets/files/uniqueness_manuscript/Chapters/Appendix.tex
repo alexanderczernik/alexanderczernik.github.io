@@ -1,0 +1,168 @@
+\section{Appendix}
+
+%%%%GPT Writing Assistance 
+\begin{lemma}\label{lemma:conv_ineq}
+    Let $m \in \mathbb{Z}^2$ and $\alpha \in (1, 2)$. Then we have the bound
+    \begin{equation*}
+        S(m) \coloneqq \sum_{n \in \mathbb{Z}^2} \langle n \rangle^{-\alpha} \langle n + m \rangle^{-\alpha} \lesssim_\alpha \langle m \rangle^{2-2\alpha}.
+    \end{equation*}
+    If $\alpha = 2$, then we have the bound
+    \begin{align*}
+        S_2(m) \coloneqq \sum_{n \in \mathbb{Z}^2} \langle n \rangle^{-2} \langle n + m \rangle^{-2} \lesssim \jb{m}^{-2} (1+\ln(\jb{m}^2)).
+    \end{align*}
+\end{lemma}
+
+\begin{proof}
+    We cover the domain of summation into three regions: $R_1 \coloneqq \{n \in \mathbb{Z}^2 : |n| \le \frac{|m|}{2}\}$, $R_2 \coloneqq \{n \in \mathbb{Z}^2 : |n+m| \le \frac{|m|}{2}\}$, and $R_3 \coloneqq \{n \in \mathbb{Z}^2 : |n| > \frac{|m|}{2} \text{ and } |n + m| > \frac{|m|}{2}\}$. Since $\mathbb{Z}^2 \subset R_1 \cup R_2 \cup R_3$, establishing the bound on each of these three subregions is sufficient to prove the statement for the entire sum.
+
+    The bound for $R_1$ follows by applying the reverse triangle inequality. For any $n \in R_1$, we have $|n| \le \frac{|m|}{2}$, which implies:
+    \begin{equation*}
+        |n+m| \ge |m| - |n| \ge |m| - \frac{|m|}{2} = \frac{|m|}{2}.
+    \end{equation*}
+    Because $\alpha > 0$, this implies $\langle n + m \rangle^{-\alpha} \lesssim \langle m \rangle^{-\alpha}$. Approximating the remaining sum by a polar integral and utilizing the fact that $2 - \alpha > 0$ for $\alpha \in (1, 2)$, we obtain
+    \begin{align}\label{S_R1_bound}
+        \begin{split}
+        S_{R_1}(m) &= \sum_{n \in R_1} \langle n \rangle^{-\alpha}\langle n+m \rangle^{-\alpha} 
+        \lesssim \langle m \rangle^{-\alpha} \sum_{|n| \le \frac{|m|}{2}} \langle n \rangle^{-\alpha} \\
+        &\lesssim \langle m \rangle^{-\alpha} \left(1+\int_0^{\frac{|m|}{2}} (1 + r^2)^{-\frac{\alpha}{2}} r \, dr \right)
+        = \langle m \rangle^{-\alpha} \left(1 + \frac{1}{2 - \alpha} \left[ (1+r^2)^{1-\frac{\alpha}{2}} \right]_{0}^{\frac{|m|}{2}} \right) \\
+&\lesssim_\alpha \langle m \rangle^{-\alpha}
+    \left(1+\langle m \rangle^{2-\alpha}\right)
+\lesssim_\alpha \langle m \rangle^{2-2\alpha}.        
+\end{split}
+    \end{align}
+    The bound in region $R_2$ follows by shifting the summation index to $n' = n+m$. 
+
+    To show the bound in the final region $R_3$, we apply Young's product inequality
+    \begin{equation*}
+        S_{R_3}(m) \le \frac{1}{2} \sum_{n \in R_3}\langle n \rangle^{-2\alpha} + \frac{1}{2} \sum_{n \in R_3}\langle n+m \rangle^{-2\alpha}.
+    \end{equation*}
+    By symmetry, it suffices to bound the first term. Comparing the sum to a polar integral and noting that $1 - \alpha < 0$, we obtain
+    \begin{align*}
+        \sum_{n \in R_3} \langle n \rangle^{-2\alpha} 
+        \le \sum_{|n| > \frac{|m|}{2}} \langle n \rangle^{-2\alpha} 
+        \lesssim \int_{\frac{|m|}{2}}^\infty (1+r^2)^{-\alpha} r \, dr 
+        = \frac{1}{2 - 2\alpha} \left[ (1+r^2)^{1-\alpha} \right]_{\frac{|m|}{2}}^\infty 
+        \lesssim \langle m \rangle^{2-2\alpha}.
+    \end{align*}
+    The proof for the bound of $S_2$ follows analogously, but the estimate in \eqref{S_R1_bound} changes to 
+    \begin{align*}
+        S_{2_{R_1}}(m) &= \sum_{n \in R_1} \langle n \rangle^{-2}\langle n+m \rangle^{-2} 
+        \\
+        &\lesssim \langle m \rangle^{-2} \left(1+ \int_0^{\frac{|m|}{2}} (1 + r^2)^{-1} r \, dr \right)
+        \\
+%&= \langle m \rangle^{-2}\left(1+\frac12\ln\left(1+\frac{|m|^2}{4}\right)\right) \\
+&\leq \langle m \rangle^{-2}
+    \left(1+\ln(1+|m|^2)\right).
+    \end{align*}
+    This yields the desired estimate.
+\end{proof}
+%%%%
+
+%%%%GPT alone:
+% Next, we demonstrate that $\H^{-\sigma}(\T^2)$ is the natural support space of any invariant measure of the \eqref{eq:SDMFW}.
+% \begin{proposition}[Sobolev regularity of the stationary Gaussian law]
+% \label{prop:stationary_sobolev_regularity}
+% Let $\eps>0$ and $\Lambda=1-\Delta$ on $\mathbb{T}^2$.
+% Suppose that $L$ is a strictly positive self-adjoint operator on
+% $L^2(\mathbb{T}^2)$ with form domain $H^1(\mathbb{T}^2)$ and that
+% \[
+%     a\Lambda \leq L \leq b\Lambda
+% \]
+% in the sense of quadratic forms, for some $a,b>0$.
+% Let $\nu$ be the centered Gaussian law on
+% $\mathcal{D}'(\mathbb{T}^2)\times\mathcal{D}'(\mathbb{T}^2)$
+% with covariance
+% \[
+%     \begin{pmatrix}
+%         L^{-1} & 0\\
+%         0 & \eps^{-2} I
+%     \end{pmatrix},
+% \]
+% where covariance is understood through pairings with smooth test
+% functions.
+
+% Then
+% \[
+%     \nu\left(
+%         \bigcap_{\delta>0}
+%         \left[
+%             H^{-\delta}(\mathbb{T}^2)
+%             \times H^{-1-\delta}(\mathbb{T}^2)
+%         \right]
+%     \right)=1.
+% \]
+% Moreover, both endpoint carry no mass:
+% \[
+%     \nu\bigl(\{(u,v):u\in L^2(\mathbb{T}^2)\}\bigr)=0,
+%     \qquad
+%     \nu\bigl(\{(u,v):v\in H^{-1}(\mathbb{T}^2)\}\bigr)=0.
+% \]
+% \end{proposition}
+
+% \begin{proof}
+% Let $(e_j)_{j\geq1}$ be a real orthonormal eigenbasis of $\Lambda$ in $L^2(\mathbb{T}^2)$, with $\Lambda e_j=\lambda_j e_j$. On $\mathbb{T}^2$,
+% \[
+%     \sum_{j\geq1}\lambda_j^{-1-\delta}<\infty
+%     \quad\text{for every }\delta>0,
+%     \qquad
+%     \sum_{j\geq1}\lambda_j^{-1}=\infty.
+% \]
+% The form inequalities imply
+% \[
+%     b^{-1}\Lambda^{-1}
+%     \leq L^{-1}
+%     \leq a^{-1}\Lambda^{-1}.
+% \]
+% Thus, by Tonelli's theorem, for $(u,v)$ with law $\nu$,
+% \begin{align*}
+%     \mathbb{E}_{\nu}\|u\|_{H^{-\delta}}^2
+%     &=
+%     \sum_{j\geq1}\lambda_j^{-\delta}
+%         \langle L^{-1}e_j,e_j\rangle_{L^2}
+%     \leq
+%     a^{-1}\sum_{j\geq1}\lambda_j^{-1-\delta}
+%     <\infty,\\
+%     \mathbb{E}_{\nu}\|v\|_{H^{-1-\delta}}^2
+%     &=
+%     \eps^{-2}\sum_{j\geq1}\lambda_j^{-1-\delta}
+%     <\infty.
+% \end{align*}
+% Consequently, $\nu(H^{-\delta}\times H^{-1-\delta})=1$ for every $\delta>0$. Taking the countable intersection over $\delta=1/k$, $k\geq1$, proves the first assertion.
+
+% To prove that the endpoints have zero-mass, consider either
+% $Y=u$ or $Y=\Lambda^{-1/2}v$.
+% The covariance matrix $K_N$ of the real Gaussian vector
+% \[
+%     \bigl(\langle Y,e_1\rangle,\ldots,
+%           \langle Y,e_N\rangle\bigr)
+% \]
+% satisfies
+% \[
+%     K_N\geq
+%     c\,\operatorname{diag}(\lambda_1^{-1},\ldots,\lambda_N^{-1}),
+% \]
+% where $c=b^{-1}$ in the first case and $c=\eps^{-2}$
+% in the second case. Gaussian integration and monotonicity of
+% the determinant on positive definite matrices give
+% \begin{align*}
+%     \mathbb{E}_{\nu}
+%     \exp\left(-\sum_{j=1}^N|\langle Y,e_j\rangle|^2\right)
+%     &=
+%     \det(I_N+2K_N)^{-1/2}\\
+%     &\leq
+%     \prod_{j=1}^N(1+2c\lambda_j^{-1})^{-1/2}
+%     \longrightarrow 0.
+% \end{align*}
+% The convergence follows from
+% $\sum_j\lambda_j^{-1}=\infty$.
+% By bounded convergence, with the convention $e^{-\infty}=0$,
+% \[
+%     \mathbb{E}_{\nu}
+%     \exp\left(-\sum_{j\geq1}|\langle Y,e_j\rangle|^2\right)=0.
+% \]
+% Hence the series diverges almost surely. Applying this first
+% to $Y=u$ and then to $Y=\Lambda^{-1/2}v$ yields the two
+% endpoint assertions.
+% \end{proof}
+

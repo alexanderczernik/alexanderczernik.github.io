@@ -1,0 +1,480 @@
+%Readers Guide: 
+%The author documented the usage of AI. For most of the document ChatGPT Astra was used as a writing assistance. When AI was used to assist or provide a proof(generate a Proof) these paragraphs are marked by: 
+%%%%GPT Reason why GPT was used
+%Paragraph
+%%%%
+\section{Introduction}
+
+Let $\xi$ be space-time white noise. We consider here the following stochastic damped wave equation with a wick-renormalized mean field nonlinearity (SDMFW) on the torus $\T^2 = \R^2 / (2\pi \Z)^2$ 
+\begin{align}\tag{SDMFW}\label{eq:SDMFW}
+\begin{cases}
+\eps^2 \partial_t^2 u_\eps +  \partial_t u_\eps + (1 - \Delta) u_\eps + \E[\wick{u_\eps^2}]u_\eps   = \sqrt{2}\xi,    \\
+(u_\eps,\partial_t u_\eps)_{| t=0} =(\phi _0,\phi _1) 
+\end{cases}
+\quad (t,x ) \in \R_+ \times \T^2
+\end{align}
+for $\eps \in (0,1]$. The Wick-renormalization is defined in Section~\ref{sec:SDMFW_inv_msr}.
+
+We investigate the dynamics under the assumption of the existence of an invariant measure $\mu$ for the flow $u$. Restricting the class of measures to those who satisfy a specific moment condition, we show that such a measure is unique and show that this measure is the centered Gaussian measure with distributional covariance as specified in Section~\ref{sec:SDMFW_inv_msr}. This goal is summarized in Theorem~\ref{theorem:uniqueness_SDMFW}
+\begin{theorem}\label{theorem:uniqueness_SDMFW}
+    Given $\sigma \in (0,\frac{1}{2})$, $\eps \in (0,1]$ and let $\mathcal{H}^{-\sigma} \coloneq H^{-\sigma}(\T^2) \times H^{-1-\sigma}(\T^2)$. 
+    Then $\rho_\eps = \mathcal{N}(0, \Lambda^{-1}) \otimes \mathcal{N}(0, \eps^{-2}I)$ is the unique invariant measure of the~\eqref{eq:SDMFW} in the class
+    \[
+        \mathcal W
+        :=\left\{
+            \mu\in\mathcal P(\mathcal H^{-\sigma}):
+            \mathbb E_\mu[\wick{u^2}]\in H^{-\sigma}(\T^2)
+        \right\}.
+    \]
+\end{theorem}
+
+Furthermore, we generalize this uniqueness result to the parabolic stochastic mean-field heat equation (SMFH):
+\begin{align}\tag{SMFH}\label{eq:SMFH}
+\begin{cases}
+ \partial_t u + (1 - \Delta) u + \E[\wick{u^2}]u   = \sqrt{2}\xi,    \\
+u_{| t=0} =\phi _0
+\end{cases}
+\quad (t,x ) \in \R_+ \times \T^2.
+\end{align}
+Finally, we demonstrate a Smoluchowski-Kramers type behavior for the invariant measures $\rho_\eps$ and $\rho_0$ as $\eps \to 0$.
+This result can be directly generalized to the unique invariant measure of the stochastic damped wave equation with cubic nonlinearity (see \cite{tolomeo2023ergodicityhyperbolicpphi2model}) and the invariant measure of the stochastic heat equation with cubic nonlinearity (see \cite{TsatsoulisWeber2018}). The reason is that the proof concerns effectively only the second marginal which is the same for both equation families. 
+\begin{corollary}\label{theorem:convergence_uniqueness_SMFH}
+    Given $\sigma \in (0,\frac{1}{2})$. Then $\rho_0 = \mathcal{N}(0, (1-\Delta)^{-1})$ is the unique invariant measure of the \eqref{eq:SMFH} in the class 
+    \begin{align*}
+        \mathcal{W}_0:=\left\{
+            \mu\in\mathcal P(H^{-\sigma}(\T^2)):
+            \mathbb E_\mu[\wick{u^2}]\in H^{-\sigma}(\T^2)
+        \right\}.
+    \end{align*}
+    Furthermore, for $\sigma > 0$, 
+    \begin{align*}
+        \rho_\eps \xrightarrow[]{\mathrm{rv}} \rho_0 \quad \text{as $\eps \to 0$}
+    \end{align*}
+    in the sense that projected onto its first component $(\pi_1)_* \rho_\eps = \rho_0$ for all $\eps \in (0,1]$ and for all radial vanishing functions
+    \begin{align*}
+        f \in C_{\mathrm{rv}}(H^{-1-\sigma}(\T^2))
+    \coloneqq
+    \left\{
+        f\in C_b(H^{-1-\sigma}(\T^2)) \mid
+        \lim_{R\to\infty}
+        \sup_{\|x\|_X\geq R}|f(x)|=0
+    \right\}
+    \end{align*}
+    the second component is vanishing:
+    \begin{align*}
+        \int_{H^{-1-\sigma}(\T^2)}
+        f(v)\,d((\pi_2)_*\rho_\eps)(v)
+        \longrightarrow 0 \quad \text{as $\eps \to 0$}.
+    \end{align*}
+\end{corollary}
+
+Our interest for the \eqref{eq:SMFH} and the \eqref{eq:SDMFW} arises from the stochastic quantization program proposed by Parisi and Wu in 1981 \cite{Parisi1981}, originally proposed as a method to evaluate path integrals in gauge theories without the need for gauge-fixing. The idea is that given a target Euclidean quantum field measure, we construct Langevin dynamics whose solution converges in Law to the target measure. Then, in principle, we can sample from the target measure via a Monte Carlo Method. 
+Mathematically, in recent years the Euclidean $\Phi^4$ model and different approaches of its stochastic quantization have attracted a lot of attention. 
+The most straight forward stochastic quantization is given by 
+\begin{align}\label{eq:SNLH_unrenormalized}
+\begin{cases}
+ \partial_t u + (1 - \Delta) u + u^3  = \sqrt{2}\xi,    \\
+u_{| t=0} =\phi _0.
+\end{cases}
+\end{align}
+Since this is a parabolic equation we refer to this approach as the parabolic stochastic quantization of the $\Phi^4$ model. 
+For $d = 2$, this constitutes a singular stochastic partial differential equation (SPDE), consequently, to make sense of this equation a renormalization is necessary. Considering the $\Phi^4_2$ Euclidean quantum field theory, the $\Phi^4$ model restricted to two dimensions, this normalization corresponds to the second moment of the free field theory, namely the second moment of the Gaussian measure $\mathcal{N}(0, (1-\Delta)^{-1})$ which formally equals $\infty$ (see \cite{GlimmJaffe1987}). 
+
+%%%%GPT Writing and Literature help: (especially for the four dimensional case) which we now leave out anyways
+The construction of the $\Phi^4_2$ model traces back to \cite{GlimmJaffe1987}. For the associated parabolic dynamics \cite{DaPratoDebussche2003} established global strong solutions on $\mathbb{T}^2$ for Gibbs-almost-every initial condition. \cite{MourratWeber2017Plane} subsequently proved global well-posedness for arbitrary initial conditions in suitable distribution spaces, both on the torus and on $\mathbb{R}^2$. On $\mathbb{T}^2$, unique ergodicity of the $\Phi^4_2$ measure was established in \cite{TsatsoulisWeber2018}, completing the parabolic stochastic quantization of the $\Phi^4_2$-model on the two-dimensional torus. 
+
+% \begin{remark}
+% In three dimensions, a modern PDE construction of the $\Phi^4_3$ measure is given in \cite{GubinelliHofmanova2021}. Global well-posedness and exponential ergodicity of the parabolic dynamics on $\mathbb{T}^3$ follow from \cite{MourratWeber2017Infinity,HairerMattingly2018, HairerSchonbauer2022}. Here, renormalization requires an additional divergent linear counterterm beyond Wick ordering. In four dimensions, the situation is still under research: scaling limits of standard lattice $\Phi^4_4$ models are Gaussian \cite{AizenmanDuminilCopin2021}, obstructing an analogous construction of a non-Gaussian field by this route.
+% \end{remark}
+
+%%%%GPT: wrtiting help
+An alternative approach to the parabolic stochastic quantization of $\Phi^4$ is provided by the hyperbolic stochastic quantization, given by the second-order equation
+\begin{align}\label{eq:SNLDW_unrenormalized}
+\begin{cases}
+\partial_t^2 u+\partial_t u+(1-\Delta)u+u^3=\sqrt{2}\xi,\\
+(u,\partial_t u)|_{t=0}=(\phi_0,\phi_1).
+\end{cases}
+\end{align}
+Its Hamiltonian structure, with position variable $u$ and velocity variable $\partial_t u$, supplemented by damping and noise, connects this approach with sampling methods based on momentum variables, including Hamiltonian Monte Carlo \cite{DuaneEtAl1987}.
+
+In two dimensions, Wick renormalization permits the construction of these dynamics despite the absence of parabolic smoothing.
+On $\mathbb{T}^2$, \cite{GKOT2022} established global well-posedness for Gibbs-almost-every initial condition and invariance of the Gibbs measure. On $\mathbb{R}^2$, invariant Gibbs dynamics were constructed by \cite{OTWZ2026}. While on the torus, \cite{Tolomeo2023Ergodicity} proved ergodicity of the Gibbs measure and uniqueness within a class of invariant measures satisfying a moment condition. In particular, ergodicity yields almost-sure convergence of time averages for Gibbs-almost-every initial condition, partly completing the hyperbolic stochastic quantization program for the $\Phi^4_2$ model on the two-dimensional torus. 
+
+
+
+%%%%GPT Writing assistence + drew attention to the work by DelgadinoSmith2026
+Equation \eqref{eq:SDMFW} arises as the mean-field limit of the hyperbolic stochastic quantization of the $O(N)$ linear sigma model on $\mathbb{T}^2$, an $N$-component generalization of the $\Phi^4_2$ model considered by \cite{Wilson1973}. The corresponding system consists of $N$ stochastic damped wave equations coupled through a Wick-renormalized cubic interaction with mean-field scaling $1/N$.
+
+For the parabolic dynamics \cite{Shen2022} established convergence to the mean-field equation \eqref{eq:SMFH} in probability in suitable path spaces and under appropriate assumptions on the initial data. For sufficiently large mass, they also proved the Gaussian free field measure is the unique invariant measure of the \eqref{eq:SMFH} and convergence of every fixed collection of Gibbs marginals to the corresponding product of Gaussian free field measures. \cite{DelgadinoSmith2026} subsequently removed the large-mass restriction for this static convergence.
+
+\cite{liu2025} established global well-posedness and the mean-field limit for the hyperbolic dynamics, again with convergence in probability on finite time intervals under suitable initial-data assumptions. They also proved convergence of the stationary Gibbs dynamics for every positive mass. At mass one, the limiting stationary law equals $\rho_1$.
+This work does not establish uniqueness of the invariant law of the hyperbolic mean-field equations. 
+
+In Theorem \ref{theorem:uniqueness_SDMFW} we establish uniqueness at mass one under the stated moment condition, complementing the large-mass uniqueness result for the parabolic mean-field dynamics in \cite{Shen2022}.
+
+%%%%GPT Writing assistence:
+Finally, we consider the Smoluchowski-Kramers approximation, which connects hyperbolic and parabolic stochastic quantization through the vanishing-inertia limit $\varepsilon\to0$. Building on \cite{Zine2025}'s work on singular stochastic wave equations on $\mathbb{T}^2$,  \cite{czernik2026} established this approximation for both the hyperbolic $O(N)$ linear sigma model and its mean-field limit. Together with the corresponding large-$N$ limits, their results yield the diagram in Figure~\ref{commutative_diagram}, with both orders of limits leading to the \eqref{eq:SMFH}.
+
+The present work complements these dynamical results at the level of invariant measures. Under the stated renormalized second-moment condition, we identify the unique invariant law $\rho_\varepsilon$ of the \eqref{eq:SDMFW} and describe its $\varepsilon\to0$ behavior in Theorem~\ref{theorem:convergence_uniqueness_SMFH}.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzcd}[row sep=large, column sep=huge]
+        \mathrm{HLSM}_{N,\varepsilon}
+        \arrow[r, "N\to\infty"]
+        \arrow[d, "\varepsilon\to0"']
+        &
+        \text{SDMFW}_{\varepsilon}
+        \arrow[d, "\varepsilon\to0"]
+        \\
+        \mathrm{PLSM}_{N}
+        \arrow[r, "N\to\infty"']
+        &
+        \text{SMFH}
+    \end{tikzcd}
+    \caption{Mean-field and Smoluchowski-Kramers limits of the
+    stochastic quantization dynamics on $\mathbb{T}^2$.
+    The arrows represent the respective limits under the
+    hypotheses of \cite{czernik2026} and this work.}\label{commutative_diagram}
+\end{figure}
+
+% \subsection{The SDMFW under an invariant measure}
+% First, we have to fix the choice of Wick-renormalization. Motivated by the stochastic quantization program, we choose to normalize via the second moment of free field distribution corresponding to the SDMFW, the Gaussian free field $\mathcal{N}(0, 1- \Delta)$. We define
+% \begin{align*}
+%     \wick{u^2} \, \coloneq \lim_{N \to \infty} (P_N u)^2 - \sum_{\jb{n} \leq N} \jb{n}^{-2}
+% \end{align*}
+% whenever this limit exists in an appropriate space to be defined shortly.
+% Suppose the initial data for \eqref{eq:SDMFW} is sampled from an invariant distribution $\mu$. The nonlinear dynamics then reduce to linear dynamics:
+% \begin{align*}
+%     0 &= \eps^2 \partial_t^2 u_\eps +  \partial_t u_\eps + (1 - \Delta) u_\eps  + \EVMU{\wick{u_\eps^2}(t)}u_\eps - \sqrt{2}dW_t,    \\
+%     &= \eps^2 \partial_t^2 u_\eps +  \partial_t u_\eps + (1 - \Delta + \E[\wick{u_\eps^2}(0)]) u_\eps - \sqrt{2}dW_t.
+% \end{align*}
+% Writing this into an Ito-formalism, we obtain an infinite-dimensional Ornstein-Uhlenbeck PDE:
+% Denote $\Lambda \coloneq 1- \Delta$, $M_\mu \coloneq \EVMU{\wick{u^2}}$, and $L \coloneq \Lambda + M_\mu$. Then under an invariant measure the SDMFW equation is given by 
+% \begin{align}\label{inv_SKA}
+% \begin{cases}
+%     dX(t) \coloneq d\begin{pmatrix}
+%         u_\eps(t) \\ \partial_t u_\eps(t)
+%     \end{pmatrix}
+%     = 
+%     \begin{pmatrix}
+%         0 & 1
+%         \\
+%         -\eps^{-2}L & -\eps^{-2}
+%     \end{pmatrix}
+%     X(t) dt + \sqrt{2}
+%     \begin{pmatrix}
+%         0 
+%         \\
+%         \eps^{-2}
+%     \end{pmatrix}
+%     dW_t
+%     \\
+%     \rule{0mm}{6mm}(u_\eps, \partial_t u_\eps) |_{t = 0} \sim \mu,
+%     \end{cases}
+% \end{align}
+
+% Assuming a well-defined solution flow to \eqref{inv_SKA} exists, note that any invariant measure to \eqref{inv_SKA} must be a Gaussian measure of the form $\mathcal{N}\left(0, \begin{pmatrix}
+%     L^{-1} & 0 \\ 0 & \eps^{-2}
+% \end{pmatrix}\right)$. This is a standard consequence of the linearity of the equation, as established in \cite[Theorem 11.7]{DaPrato_Zabczyk_2014}. 
+% We will demonstrate this rigorously in Proposition ~\ref{prop_characterization_invmsr}. In Proposition \ref{prop:stationary_sobolev_regularity} we show that such a Gaussian measure is concentrated on $\H^{-\sigma}(\T^2)$ for some $\sigma > 0$. This motivates the choice of function space, namely  $\H^{-\sigma}(\T^2)$, in Theorem \ref{theorem:uniqueness_SDMFW}. After clarifying the function space, going forth we denote with
+% \begin{align*}
+%     \mathcal{N}\left(0, \begin{pmatrix}
+%     L^{-1} & 0 \\ 0 & \eps^{-2}
+% \end{pmatrix}\right)
+% \end{align*}
+% the centered Gaussian measure on some appropriate Hilbert space, whose covariance form, evaluated on $L^2(\T^2) \times L^2(\T^2)$ test functions, is given by the previous covariance. 
+
+% \begin{remark}
+%     Note, that \cite{Tolomeo2023Ergodicity} employed the same Wick-renormalization for his proof of unique ergodictity of stochatic damped wave equations with polynomial non-linearity on $\T^2$. 
+% \end{remark}
+% \begin{remark}
+%     In the recent works \cite{GKOT2022}, \cite{liu2025} who proved pathwise existence of stochastic wave equations on $\T^2$ the authors chose a different Wick-renormalization depending on the Da Prato-Debussche decomposition of a solution: $u = v + \Psi$, where $\Psi$ is a stochastic convolution of the white-noise term and $v$ the residual term. They defined the Wick-renormalization as 
+%     \begin{align*}
+%     \wick{u^2}(t) \; \coloneq \lim_{N \rightarrow \infty} (\P_N u)^2 - \E[(\P_N\Psi)^2].
+%     \end{align*}
+%     This renormalization cannot be employed in our setting as 
+%     \begin{align*}
+%     \EVMU{\wick{u_\eps(t)^2}} &= \EVMU{\lim_{N \to \infty} (P_N u_\eps(t))^2 - \EV{(P_N \Psi(t))^2}} 
+%     \\
+%     &= \EVMU{\lim_{N \to \infty} (P_N u_\eps(0))^2 - \EV{(P_N \Psi(t))^2}} 
+%     \\
+%     &\not = \EVMU{\lim_{N \to \infty} (P_N u_\eps(0))^2 - \EV{(P_N \Psi(0))^2}} = \EVMU{\wick{u_\eps(0)^2}}
+%     \end{align*}
+%     Note, however, that $\EV{(P_N \Psi(t))^2} \sim \sum_{\jb{n} \leq N} \jb{n}^{-2}$. Thus, the renormalizations are of the same order. 
+% \end{remark}
+
+
+%%%% GPT Writing assistence (rework of the last part):
+\subsection{The SDMFW under an invariant measure}\label{sec:SDMFW_inv_msr}
+
+We first fix the Wick-renormalization convention. Set
+$\Lambda := 1-\Delta$ and let $\rho_0 := \mathcal{N}(0,\Lambda^{-1})$ be the massive ($m = 1$) Gaussian
+free field measure. Let $\langle n\rangle=(1+|n|^2)^{1/2}$ denote the Japanese Bracket. We renormalize relative to $\rho_0$, defining
+\[
+    c_N := \mathbb{E}_{\rho_0}\bigl[(P_N u)(x)^2\bigr] = \sum_{\langle n\rangle\leq N}\langle n\rangle^{-2}
+    \qquad \text{and} \qquad
+    \wick{u^2} := \lim_{N\to\infty}\bigl((P_N u)^2-c_N\bigr),
+\]
+whenever the limit exists in a distributional sense that we specify later. This is the Wick ordering associated with the Euclidean $\Phi^4_2$-model as motivated previously. 
+
+Suppose that the \eqref{eq:SDMFW} admits a stationary solution with law $\mu$, and that its renormalized second moment is well-defined. Stationarity implies, 
+\[
+    \mathbb{E}\bigl[\wick{u_\varepsilon(t)^2}\bigr]
+    = \mathbb{E}\bigl[\wick{u_\varepsilon(0)^2}\bigr] = \mathbb{E}_{\mu}[\wick{u^2}] \eqcolon M_\mu.
+\]
+Thus, $M_\mu$ is a deterministic, time-independent spatial distribution. Once the stationary law is fixed, the mean-field term therefore becomes linear.
+
+Writing $L_\mu := \Lambda+M_\mu$, we obtain
+\begin{equation}\label{inv_SKA}
+    \begin{cases}
+        du_\eps=v_\eps\,dt,\\
+        dv_\eps=-\eps^{-2}(L_\mu u_\eps+v_\eps)\,dt
+        +\sqrt2\,\eps^{-2}\,dW_t,
+    \end{cases}
+\end{equation}
+where $W$ is a cylindrical Wiener process on $L^2(\mathbb{T}^2)$.
+
+
+The self-adjoint realization of $L_\mu$ and the weak interpretation of~\eqref{inv_SKA} are established in Section~\ref{Chpt_Invariant_Dynamics}.  
+Equation~\eqref{inv_SKA} is linear once $M_\mu$ is fixed.  Projecting a
+stationary solution onto any finite collection of eigenfunctions of
+$L_\mu$ gives a finite-dimensional Ornstein-Uhlenbeck system.
+The existence of an invariant probability measure for each such
+projection forces every eigenvalue of $L_\mu$ to be strictly positive,
+and the equation uniquely determines the invariant law. Proposition~\ref{prop_characterization_invmsr} yields
+\[
+    \mu = \mathcal{N}(0, L_\mu^{-1}) \otimes \mathcal{N}(0, \varepsilon^{-2}I) \in \mathcal P(\H^{-\sigma})
+\]
+Here the matrix denotes the distributional covariance.  For
+$f\in H^\sigma(\T^2)$ and $g\in H^{1+\sigma}(\T^2)$,
+\begin{align*}
+    \EVMU{\bigl(\langle u,f\rangle+\langle v,g\rangle\bigr)^2}
+    =
+    \langle L_\mu^{-1}f,f\rangle_{L^2_x} +\varepsilon^{-2}\|g\|_{L^2_x}^2.
+\end{align*}
+
+
+\noindent
+Hence, the natural support space is $\H$.
+Indeed, the free stationary position and velocity fields belong almost surely to these respective spaces, while almost surely
+neither belongs to the corresponding endpoint space $L^2(\mathbb{T}^2)$ or $H^{-1}(\mathbb{T}^2)$. This regularity is consistent with the constructions of singular stochastic wave dynamics in~\cite{GKOT2022,liu2025}.
+
+\begin{remark}
+    The present Wick ordering is compatible with a Da Prato-Debussche decomposition based Wick ordering used in \cite{GKOT2022,liu2025} who proved global pathwise existence of singular stochastic wave equations on $\T^2$ --- in the sense that their renormalization constant $c_{N,t}$ is of the same order as $c_N$.
+    However, as $c_{N,t}$ is time dependent, subtracting this constant produces an explicitly time-dependent renormalization, for which stationarity of the solution law alone does not make the renormalized expectation constant in time, and therefore, in this instance, the renormalized equation would not behave as we expect. 
+    Additionally, we note that \cite{Tolomeo2023Ergodicity} employed the same Wick ordering for his work on the conditional unique ergodictity of stochastic damped wave equations with polynomial nonlinearity on $\T^2$. 
+\end{remark}
+
+%%%%GPT Astra Writing assistance 
+\subsection{Uniqueness through a self-consistency argument}
+The law dependence of the \eqref{eq:SDMFW} prevents a direct application of standard uniqueness criteria for invariant measures as already noted in the study of the parabolic mean-field equation in \cite{Shen2022}.
+Indeed, these criteria, such as the strong Feller Property combined with irreducibility (\cite{Da_Prato_Zabczyk_1996, HairerMattingly2018}) or Harris-type arguments (\cite{Hairer2011}), are typically formulated for a fixed Markov transition semigroup.
+For a law-independent stochastic equation, with solution $X_t$, its transition probabilities
+\[
+    P_t(z,A):=\mathbb{P}(X_t^z\in A)
+\]
+are determined by the equation and do not depend on the initial distribution. In particular, the induced evolution of probability measures preserves convex combinations:
+\[
+    \bigl(a\nu_1+(1-a)\nu_2\bigr)P_t
+    =
+    a\nu_1P_t+(1-a)\nu_2P_t,
+    \qquad 0\leq a\leq1.
+\]
+This remains true when the drift is nonlinear in the state.
+
+The mean-field equation \eqref{eq:SDMFW} has a different
+structure. Writing $\mathcal{S}_t\nu$ for the law at time $t$
+of a solution initialized with law $\nu$, its drift involves
+$
+    M_{\mathcal{S}_t\nu}
+    =
+    \mathbb{E}_{\mathcal{S}_t\nu}[\wick{u^2}].
+$
+Thus, the coefficients themselves depend on the evolving law.
+Under suitable well-posedness assumptions, the maps $\mathcal{S}_t$ form a semigroup on probability measures, but this semigroup is generally nonlinear and need not preserve convex combinations (see \cite{RehmeierRockner2025}). Consequently, it is not represented by a single law-independent Markov transition semigroup.
+
+In the hyperbolic setting, the absence of spatial smoothing creates an additional obstacle to standard strong Feller arguments. \cite{Tolomeo2023Ergodicity} discusses this obstruction and the difficulties with the long-time estimates needed for asymptotic strong Feller methods, as proposed in \cite{Hairer2006}.
+\cite{Tolomeo2023Ergodicity} overcomes these difficulties for the hyperbolic $P(\Phi)_2$ model through asymptotic strong Feller and coupling properties restricted to a group of regular shifts.
+The argument yields ergodicity and conditional uniqueness for the fixed Markov semigroup associated with that equation.
+For the \eqref{eq:SDMFW}, fixing a candidate invariant law $\mu$, freezes $M_\mu$ and similarly determines a time-homogeneous Markov semigroup. However, another candidate law $\nu$ may determine a different potential $M_\nu$ and therefore a different semigroup. Establishing uniqueness for each frozen equation does not compare these two laws. Rather, the question needed to be answered is which frozen potentials are consistent with their own invariant distributions.
+
+For the parabolic mean-field equation \cite{Shen2022} prove uniqueness using decay estimates relative to the claimed unique invariant measure, the Gaussian free field, under a sufficiently large mass assumption. Our approach instead exploits the stationary covariance and does not require analogous long-time comparison estimates for the hyperbolic mean-field dynamics. 
+
+A demonstrative simplification is the scalar self-consistency observation in Remark 5.5 in \cite{Shen2022}.
+Suppose that $M_\mu$ is a spatial constant $c$. The Gaussian characterization, discussed in Section \ref{sec:SDMFW_inv_msr}, then gives the position covariance $(\Lambda+c)^{-1}$, where $\Lambda=1-\Delta$ and $c>-1$.
+The self-consistent condition $c = \EV{u^2 - w^2}$ with $u  \sim \mathcal{N}(0,(\Lambda+c)^{-1})$ independent of $w \sim \mathcal{N}(0, \Lambda^{-1})$ then yields
+\begin{align*}
+    c
+    =
+    \sum_{n\in\mathbb{Z}^2}
+    \left(
+        \frac{1}{\langle n\rangle^2+c}
+        -
+        \frac{1}{\langle n\rangle^2}
+    \right)
+    =
+    -c\sum_{n\in\mathbb{Z}^2}
+    \frac{1}{
+        \langle n\rangle^2
+        (\langle n\rangle^2+c)
+    }.
+\end{align*}
+The series converges and is strictly positive, so $c=0$. This identifies the only self-consistent constant potential.
+
+For a general invariant law, however, $M_\mu$ need not be known a priori to be spatially constant.
+Moreover, our assumptions initially allow $M_\mu$ to be a distribution. Thus, $L_\mu=\Lambda+M_\mu$ must first be given a rigorous operator realization.
+Its inverse is generally not diagonal in the Fourier basis, and the scalar calculation above cannot be applied pointwise with $c$ replaced by $M_\mu(x)$.
+
+Our argument extends self-consistency to this operator setting. We first construct $L_\mu$ through its quadratic form and show that the existence of an admissible invariant measure forces strict positivity. We then characterize that measure as Gaussian, with distributional covariance
+\[
+    \begin{pmatrix}
+        L_\mu^{-1}&0\\
+        0&\varepsilon^{-2}I
+    \end{pmatrix}.
+\]
+The renormalized second moment is consequently determined by the covariance difference. Formally expanding $M_\mu$ in the Fourier basis $\{b_n\}_{n \in \Z^2}$, this gives
+\[
+    M_\mu
+    =
+    \sum_{n\in \Z^2} (L_\mu^{-1} - \Lambda^{-1}) (b_{n})(x) b_{-n}(x).
+\]
+The limit must be interpreted and justified carefully in an appropriate distribution space as the two unrenormalized covariance diagonals are not separately finite.
+
+The resolvent identity
+\[
+    L_\mu^{-1}-\Lambda^{-1}
+    =
+    -L_\mu^{-1}M_\mu\Lambda^{-1}
+\]
+provides the operator analogue of the scalar identity. We use it to improve the regularity of $M_\mu$ and justify a positivity argument forcing $M_\mu=0$.
+This resolves self-consistency for spatially varying potentials and establishes uniqueness in the class $\mathcal{W}$ without a large-mass assumption.
+
+% \subsection{Convergence of invariant measures}
+% Our last objective is to complete the Diagram \ref{commutative_diagram} for invariant measure. The missing link is a Smoluchowski-Kramers type convergence of the (unique) invariant measures of the hyperbolic equations to the (unique) invariant measures of the parabolic equations. Evidently, this result mainly concerns the second marginal of the invariant measure of the hyperbolic equations. Therefore, as these second marginals do not differ relevantly between the $\text{HLSM}_N$ and the SDMFW, for simplicity, we will treat only the convergence of the invariant measure of the \eqref{eq:SDMFW} to the one of the \eqref{eq:SMFH}. Thus, we aim to show the following convergence:
+% \begin{align*}
+%     \rho_\eps \coloneq \mathcal{N}\left(
+%         0,
+%         \begin{pmatrix}
+%             \Lambda^{-1}&0\\
+%             0&\varepsilon^{-2}I
+%         \end{pmatrix}
+%     \right)  \to \rho_0 \coloneq \mathcal{N}(0, \Lambda^{-1}). 
+% \end{align*}
+% It is evident that the probability measure $\rho_\eps$ will not converge to any probability measure as $\eps \to 0$. To see this, it suffices to look at the truncated finite-dimensional probability measure. Let 
+% \begin{align*}
+%     \pi_2: \H^{-\sigma}(\T^2) &\to H^{-1-\sigma}(\T^2)
+%     \\
+%     (u_1, u_2) &\rightarrow u_2
+% \end{align*}
+% be the canonical projection onto the second component. Then $(\P_N \pi_2)_* \rho_\eps$ corresponds to a finite-dimensional centered complex-valued Gaussian random variable with a diagonal covariance matrix where each diagonal entry equals $\eps^{-2}$. In particular, the family of probability measures $(\P_N \pi_2)_* \rho_\eps$ is not tight in $H^{-1-\sigma}(\T^2)$ (indeed, it is not even tight in its respective finite-dimensional subspace of $H^{-1-\sigma}(\T^2)$). Hence, by Prokhorov's theorem, this family does not converge weakly to any probability measure on $H^{-1-\sigma}(\T^2)$ as $\eps \to 0$. 
+% However, this behavior aligns with our intuition: in the limit $\eps \to 0$, the probability measure $\rho_\eps$ loses its dependence on the second component. While this cannot occur in the standard sense of weak convergence of probability measures (where mass is preserved), it can be described in a weaker sense. 
+% %%%%GPT 
+% Let $X$ be a normed space. We define 
+% \[
+%      C_{\mathrm{rv}}(X)
+%     \coloneqq
+%     \left\{
+%         f\in C_b(X) \mid
+%         \lim_{R\to\infty}
+%         \sup_{\|x\|_X\geq R}|f(x)|=0
+%     \right\}.
+% \]
+% Thus, \( C_{\mathrm{rv}}(X)\) is the class of bounded continuous functions that vanish as the norm tends to infinity. In particular, this norm allows convergence while mass is escaping, which better suits this setting. Therefore, we resort to show convergence with respect to $C_{\mathrm{rv}}(H^{-1-\sigma}(\T^2))$ functions for $\sigma > 0$, more specifically, we say that \(\rho_\eps\) converges to \(\rho_0\) if 
+%     \[
+%         (\pi_1)_*\rho_\eps
+%         =
+%         \rho_0
+%     \]
+%     for all $\eps \in (0,1]$, and
+%     \[
+%         \int_{H^{-1-\sigma}(\T^2)}
+%         f(v)\,d((\pi_2)_*\rho_\eps)(v)
+%         \longrightarrow 0
+%     \]
+%     for every
+%     \(f\in\mathcal C_{\mathrm{rv}}
+%     (H^{-1-\sigma}(\T^2))\).
+
+
+
+% \begin{remark}
+%     The more classical notion of vague convergence, defined via integration against continuous, compactly supported functions, is trivial in this setting. Because $H^{-1-\sigma}(\mathbb{T}^2)$ is an infinite-dimensional Banach space, the space of continuous, compactly supported functions on it, $C_c(H^{-1-\sigma}(\mathbb{T}^2))$, contains only the zero function. Assume, toward contradiction, that there exists a non-zero $f \in C_c(H^{-1-\sigma}(\mathbb{T}^2))$. By continuity, there exists a closed ball $\overline{B_r(x)}$ of radius $r>0$ on which $f$ does not vanish. Consequently, this closed ball is contained within the support of $f$. Since the support is compact and the ball is a closed subset, $\overline{B_r(x)}$ must itself be compact. However, Riesz's lemma implies that closed balls in a Banach space are compact if and only if the space is finite-dimensional. This yields a contradiction, confirming that $f = 0$.
+
+%     \noi
+%     In contrast, the set $C_{\mathrm{rv}}(H^{-1-\sigma}(\T^2))$ is not empty, since, for example, $e^{-\|u\|_{H^{-1-1\sigma}_x}} \in C_{\mathrm{rv}}(H^{-1-\sigma}(\T^2))$.
+% \end{remark}
+
+%%%% GPT Writing assistence (rework of the last part)::
+\subsection{Convergence of invariant measures}\label{sec:convergence_inv_msr}
+
+We finally examine the stationary measure counterpart of the Smoluchowski-Kramers approximation in Figure~\ref{commutative_diagram}.
+For the mean-field dynamics, the invariant laws identified above are
+\[
+    \rho_\varepsilon
+    =
+    \mathcal{N}(0,\Lambda^{-1})
+    \otimes
+    \mathcal{N}(0,\varepsilon^{-2}I),
+    \qquad \text{and} \qquad
+    \rho_0=\mathcal{N}(0,\Lambda^{-1}).
+\]
+Their uniqueness is understood within the classes specified in our theorems. 
+
+The finite-$N$ hyperbolic Gibbs laws studied in \cite{liu2025} have an analogous Gaussian velocity factor, so the same arguments apply componentwise. We therefore present the argument for the mean-field law.
+
+Fix $\sigma > 0$. Let $\pi_1$ and $\pi_2$ denote the coordinate projections
+from $\mathcal{H}^{-\sigma}$ onto $H^{-\sigma}(\T^2)$ and $H^{-1-\sigma}(\T^2)$, respectively.
+The position marginal satisfies
+\[
+    (\pi_1)_*\rho_\varepsilon=\rho_0
+    \qquad\text{for every }\varepsilon>0.
+\]
+Thus, the stationary position distributions already agree with the parabolic invariant law. The singular behavior as $\varepsilon\to0$ occurs entirely in the velocity marginal
+\[
+    \eta_\varepsilon
+    :=(\pi_2)_*\rho_\varepsilon
+    =\mathcal{N}(0,\varepsilon^{-2}I).
+\]
+
+These velocity marginals do not converge weakly to a probability measure on $H^{-1-\sigma}(\T^2)$.
+Indeed, choose a nonzero real-valued
+$h\in C^\infty(\mathbb{T}^2)$ with $\|h\|_{L^2}=1$.
+The continuous linear functional $v\mapsto\langle v,h\rangle$ has the one-dimensional distribution $\mathcal{N}(0,\varepsilon^{-2})$ under $\eta_\varepsilon$. Consequently, for every $R>0$,
+\[
+    \eta_\varepsilon
+    \bigl(\{v:|\langle v,h\rangle|\leq R\}\bigr)
+    =
+    \mathbb{P}(|Z|\leq\varepsilon R)
+    \longrightarrow0,
+    \qquad Z\sim\mathcal{N}(0,1).
+\]
+Hence, the projected laws, and therefore $\eta_\varepsilon$ and $\rho_\varepsilon$, admit no weakly convergent subsequence as $\varepsilon\to0$ on their respective fixed state spaces.
+
+To describe the velocity behavior, for a normed space $X$ we introduce the test-function class
+\[
+    C_{\mathrm{rv}}(X)
+    :=
+    \left\{
+        f\in C_b(X):
+        \lim_{R\to\infty}
+        \sup_{\|x\|_X\geq R}|f(x)|=0
+    \right\}.
+\]
+These functions vanish uniformly as the norm tends to infinity. The limiting statement considered here is
+\begin{equation}\label{eq:stationary_SKA_marginals}
+    (\pi_1)_*\rho_\varepsilon=\rho_0,
+    \qquad
+    \int_{H^{-1-\sigma}(\T^2)}f(v)\,\eta_\varepsilon(dv)
+    \longrightarrow0
+    \quad
+    \text{for every }f\in C_{\mathrm{rv}}(H^{-1-\sigma}(\T^2)).
+\end{equation}
+The second assertion expresses escape of the velocity marginals from every bounded subset of $H^{-1-\sigma}(\T^2)$.
+It does not assert weak convergence of $\rho_\eps$ to a probability measure.
+Together with the exact identity for the position marginal, this describes the stationary measure Smoluchowski-Kramers limit.
+
+\begin{remark}
+    The more common notion of vague convergence, defined through continuous, compactly supported test functions, $C_c(H^{-1-\sigma}(\T^2))$, is trivial in this setting since $C_c(H^{-1-\sigma}(\T^2))=\{0\}$. A nonzero continuous function with compact support would force a closed ball of positive radius to be compact, which as a consequence of Riesz' Lemma is impossible in an infinite-dimensional normed space. Testing against $C_c(H^{-1-\sigma}(\T^2))$ would therefore give no information.
+    By contrast, $C_{\mathrm{rv}}(H^{-1-\sigma}(\T^2))$ contains nonzero functions, such as $v\mapsto\exp(-\|v\|_{H^{-1-\sigma}(\T^2)}^2)$.
+\end{remark}
